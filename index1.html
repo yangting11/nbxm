@@ -5,132 +5,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
     <script src="./echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./layuiadmin/layui/css/layui.css" media="all">
     <link href="./index1.css" rel="stylesheet"></link>
     <title>Document</title>
 </head>
 <body>
     <div id="mapid"></div>
-    <div class="rightBox">
-        <div class="rightBoxHeader">
-            <div class="rightBoxHeaderLeft">
-                <form class="layui-form" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
-                                <option value=""></option>
-                                <option value="0">北京</option>
-                                <option value="1">上海</option>
-                                <option value="2">广州</option>
-                                <option value="3">深圳</option>
-                                <option value="4">杭州</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+    <div class="rightBox" id="rightBox">
+        <div class="rightBoxAll">
+            <div class="toogleBox" onclick="clickToogle()">
+                <img id="toogleImg" src="./public/img/right.png" alt="向右">
             </div>
-            <div class="rightBoxHeaderRight">
-                <div id="showTime"></div>
-                <div class="showDetail">查看详细情况</div>
+            <div class="rightBoxHeader">
+                <div class="rightBoxHeaderLeft">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">北京</option>
+                                    <option value="1">上海</option>
+                                    <option value="2">广州</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxHeaderRight">
+                    <div id="showTime"></div>
+                    <div class="showDetail" onclick="showDetail()">查看详细情况</div>
+                </div>
+            </div>
+            <div class="rightBoxBody">
+                <div class="rightBoxBodyTop">
+                    <form class="layui-form layui-row" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">短输入框</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">信息</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">数据信息</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxBodyContent">
+                    <div class="rightBoxBodyContentTitle">
+                        <span>
+                            <img src="./public/img/大饼图.png" alt="">
+                        </span>
+                        数据信息1
+                    </div>
+                    <form class="layui-form layui-row" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证手机</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证邮箱</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxBodyContent">
+                    <div class="rightBoxBodyContentTitle greenBgSpan">
+                        <span>
+                            <img src="./public/img/大饼图.png" alt="">
+                        </span>
+                        数据信息1
+                    </div>
+                    <form class="layui-form layui-row" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证手机</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证邮箱</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxBodyContent">
+                    <div class="rightBoxBodyContentTitle yellowBgSpan">
+                        <span>
+                            <img src="./public/img/大饼图.png" alt="">
+                        </span>
+                        数据信息1
+                    </div>
+                    <form class="layui-form layui-row" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证手机</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证邮箱</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">验证</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">多规则验证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">单位</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="desc">
+                    备注：根据layui框架
+                </div>
             </div>
         </div>
-        <div class="rightBoxBody">
-            <div class="rightBoxBodyTop">
-                <form class="layui-form layui-row" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">短输入框</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">信息</div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">数据信息</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="rightBoxBodyContent">
-                <form class="layui-form layui-row" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证手机</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证邮箱</label>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">多规则验证</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证</label>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">多规则验证</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="rightBoxBodyContent">
-                <form class="layui-form layui-row" action="">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证手机</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证邮箱</label>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">多规则验证</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">验证</label>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">多规则验证</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-form-mid layui-word-aux">单位</div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
     </div>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="./layuiadmin/layui/layui.all.js"></script>
     <script>
+        var ifOpen=true;
         document.getElementById("showTime").innerHTML=transTime(new Date());
         setInterval(function(){
             document.getElementById("showTime").innerHTML=transTime(new Date());
@@ -140,6 +228,7 @@
         }).extend({
             index: 'lib/index' //主入口模块
         }).use(['index', 'sample']);
+        layer = layui.layer
         var map = map;
         initMap();
         function initMap(){
@@ -178,9 +267,9 @@
                         type: 'shadow'
                     }
                 },
-                legend: {
-                    show: false
-                },
+                // legend: {
+                //     show: false
+                // },
                 grid: {
                     left: 100
                 },
@@ -264,7 +353,7 @@
                             }
                         },
                         formatter: function(params) {
-                            if (index == 10) {
+                            if (index == 5) {
                                 index = 0;
                             }
                             index++;
@@ -317,6 +406,27 @@
         }
         function formatTime(time){
             return time<10?'0'+time:time
+        }
+        function clickToogle(){
+            if(ifOpen){
+                $("#toogleImg").attr('src','./public/img/left.png')
+                $("#rightBox").css('right','-710px')
+            }else{
+                $("#toogleImg").attr('src','./public/img/right.png');
+                $("#rightBox").css('right','0px')
+
+            }
+            ifOpen=!ifOpen;
+        }
+        function showDetail(){
+            layer.open({
+                title:'初体验',
+                type: 1,
+                //,skin: 'layui-layer-rim'
+                shadeClose: true,
+                area:['1040px', '500px'],
+                content: '<iframe style="border:none;outline:none;width:100%;height:450px" src="./component/tableDetail.html"></iframe>'
+            });
         }
     </script>
 </body>
