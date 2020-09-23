@@ -3,58 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <script src="./echarts.min.js"></script>
-
     <title>Document</title>
-    <style>
-        *{
-            padding: 0px;
-            margin: 0px;
-        }
-        #mapid{
-            width:100vw;
-            height: 100vh;
-        }
-        .popup{
-            width:300px;
-            height:200px
-        }
-    </style>
+    <script src="./echarts.min.js"></script>
+    <!-- <script src="https://gallery.echartsjs.com/dep/ace/src-min/mode-javascript.js"></script>
+    <script src="https://gallery.echartsjs.com/dep/ace/src-min/snippets/text.js"></script>
+    <script src="https://gallery.echartsjs.com/dep/ace/src-min/snippets/javascript.js"></script> -->
 </head>
 <body>
-    <div id="mapid"></div>
-    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <div id="echart" style="width:240px;height: 200px;"></div>
     <script>
-        var map = map;
-        initMap();
-        function initMap(){
-            map = L.map("mapid", {
-                center: [37.005646, 114.52044],
-                zoom: 11,
-                fullscreenControl: false,
-                zoomControl: false,
-                attributionControl: false
-            });
-            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
-                subdomains: "1234"
-            });
-            map.addLayer(baseLayer);
-            let marker = L.marker([30.75, 120.75]).addTo(map);
-            marker.on('click',e=>{
-                // console.log(e,e.latlng)
-                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:320px;height:420px">
-                        <div id="chartId" style="width:300px;height:240px"></div>
-                </div>`);
-                map.openPopup(popup)  
-                echart()
-                map.flyTo([e.latlng.lat,e.latlng.lng],13)
-            })     
-        }
-        function echart() {
-            alert(111)
+        echart('echart')
+function echart(chartId) {
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById("chartId"));
+            var myChart = echarts.init(document.getElementById(chartId));
             // 指定图表的配置项和数据
             var index = 0;
 var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
@@ -66,7 +27,8 @@ var option = {
         }
     },
     legend: {
-        show: false
+        show: false,
+        data:""
     },
     grid: {
         left: 100
@@ -192,7 +154,6 @@ var option = {
 };
                 myChart.setOption(option);
             }
-
     </script>
 </body>
 </html>
