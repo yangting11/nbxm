@@ -3,43 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/public/js/leaflet.js"></script>
-    <script src="/public/js/leaflet.ChineseTmsProviders.js"></script>
-    <script src="/public/js/esri-leaflet.js"></script>
-    <script src="/public/js/leaflet-velocity.js"></script>
-    <script src="/public/js/leaflet-polygon.fillPattern.js"></script>
-    <link rel="stylesheet" href="/public/css/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="./echarts.min.js"></script>
+    <link rel="stylesheet" href="./layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index1.css" rel="stylesheet"></link>
     <title>Document</title>
-    <style>
-        *{
-            padding: 0px;
-            margin: 0px;
-        }
-        #myMap{
-            width:100vw;
-            height: 100vh;
-        }
-    </style>
 </head>
 <body>
-    <div id="myMap"></div>
+    <div id="mapid"></div>
+    <div class="rightBox">
+        <div class="rightBoxHeader">
+            <div class="rightBoxHeaderLeft">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="rightBoxHeaderRight">
+                <div id="showTime"></div>
+                <div class="showDetail">查看详细情况</div>
+            </div>
+        </div>
+        <div class="rightBoxBody"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="./layuiadmin/layui/layui.all.js"></script>
     <script>
-        var map;
-        var satelliteMap = L.tileLayer.chinaProvider("GaoDe.Normal.Map",{
-                        maxZoom: 18,
-                        minZoom: 1
-                    });
-        var satelliteName = L.tileLayer.chinaProvider('GaoDe.Normal.Map',{
-                        maxZoom: 18,
-                        minZoom: 1
-                    });
-        
-         map = L.map("myMap", {
-            center: [28.25,112.68],
-            zoom: 12,
-            layers:[satelliteMap,satelliteName],
-            zoomControl: false,
-        });
+        setInterval(function(){
+            document.getElementById("showTime").innerHTML=transTime(new Date());
+        },1000)
+        layui.config({
+            base: '../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'sample']);
+        var map = map;
+        initMap();
+        function initMap(){
+            map = L.map("mapid", {
+                center: [37.005646, 114.52044],
+                zoom: 11,
+                fullscreenControl: false,
+                zoomControl: false,
+                attributionControl: false
+            });
+            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
+                subdomains: "1234"
+            });
+            map.addLayer(baseLayer);
+            let marker = L.marker([37, 114.45]).addTo(map);
+            marker.on('click',e=>{
+                // console.log(e,e.latlng)
+                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:520px;height:420px">
+                        <div id="chartId" style="width:500px;height:400px"></div>
+                </div>`);
+                map.openPopup(popup)  
+                echart()
+                map.flyTo([e.latlng.lat,e.latlng.lng],13)
+            })     
+        }
+        function echart() {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById("chartId"));
+            // 指定图表的配置项和数据
+            var index = 0;
+            var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    left: 100
+                },
+                toolbox: {
+                    show: false,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'value',
+
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+
+                },
+                yAxis: {
+                    type: 'category',
+                    inverse: true,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            margin: 30
+                        }
+                    },
+                    data: ['杭州市', '宁波市', '温州市', '湖州市', '嘉兴市'],
+                    axisLabel: {
+                        interval:0,
+                        margin: 100,
+                        fontSize: 14,
+                        align: 'left',
+                        color: '#333',
+                        rich: {
+                            a1: {
+                                color: '#fff',
+                                backgroundColor: colorList[0],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a2: {
+                                color: '#fff',
+                                backgroundColor: colorList[1],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a3: {
+                                color: '#fff',
+                                backgroundColor: colorList[2],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            b: {
+                                color: '#fff',
+                                backgroundColor: colorList[3],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            }
+                        },
+                        formatter: function(params) {
+                            if (index == 10) {
+                                index = 0;
+                            }
+                            index++;
+                            if (index - 1 < 3) {
+                                return [
+                                    '{a' + index + '|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            } else {
+                                return [
+                                    '{b|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            }
+                        }
+                    }
+                },
+                series: [{
+                        z: 2,
+                        name: 'value',
+                        type: 'bar',
+                        data: [3.66, 2.86, 1.82, 1.8, 1.53].map((item, i) => {
+                            itemStyle = {
+                                color: i > 3 ? colorList[3] : colorList[i]
+                            }
+                            return {
+                                value: item,
+                                itemStyle: itemStyle
+                            };
+                        }),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            color: '#333333',
+                            fontSize: 14,
+                            offset: [10, 0]
+                        }
+                    }
+
+                ]
+            };
+            myChart.setOption(option);
+        }
+        function transTime(time){
+            let year = time.getFullYear();
+            let month = formatTime(time.getMonth()+1);
+            let day = formatTime(time.getDate());
+            let hour = formatTime(time.getHours());
+            let min = formatTime(time.getMinutes());
+            let sec = formatTime(time.getSeconds());
+            return year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec
+        }
+        function formatTime(time){
+            return time<10?'0'+time:time
+        }
     </script>
 </body>
 </html>

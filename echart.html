@@ -10,150 +10,148 @@
     <script src="https://gallery.echartsjs.com/dep/ace/src-min/snippets/javascript.js"></script> -->
 </head>
 <body>
-    <div id="echart" style="width:240px;height: 200px;"></div>
+    <div id="echart" style="width:100vw;height: 100vh;"></div>
     <script>
         echart('echart')
-function echart(chartId) {
-            // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById(chartId));
-            // 指定图表的配置项和数据
+        function echart(chartId) {
+            var myChart = echarts.init(document.getElementById("echart"));
             var index = 0;
-var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
-var option = {
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'shadow'
-        }
-    },
-    legend: {
-        show: false,
-        data:""
-    },
-    grid: {
-        left: 100
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'value',
-
-        splitLine: {
-            show: false
-        },
-        axisLabel: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLine: {
-            show: false
-        }
-
-    },
-    yAxis: {
-        type: 'category',
-        inverse: true,
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisPointer: {
-            label: {
-                show: true,
-                margin: 30
-            }
-        },
-        data: ['杭州市', '宁波市', '温州市', '湖州市', '嘉兴市', '绍兴市', '金华市', '衢州市', '舟山市', '台州市', '丽水市'],
-        axisLabel: {
-            margin: 100,
-            fontSize: 14,
-            align: 'left',
-            color: '#333',
-            rich: {
-                a1: {
-                    color: '#fff',
-                    backgroundColor: colorList[0],
-                    width: 30,
-                    height: 30,
-                    align: 'center',
-                    borderRadius: 2
+            var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
+            option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
                 },
-                a2: {
-                    color: '#fff',
-                    backgroundColor: colorList[1],
-                    width: 30,
-                    height: 30,
-                    align: 'center',
-                    borderRadius: 2
+                legend: {
+                    show: false
                 },
-                a3: {
-                    color: '#fff',
-                    backgroundColor: colorList[2],
-                    width: 30,
-                    height: 30,
-                    align: 'center',
-                    borderRadius: 2
+                grid: {
+                    left: 100,
                 },
-                b: {
-                    color: '#fff',
-                    backgroundColor: colorList[3],
-                    width: 30,
-                    height: 30,
-                    align: 'center',
-                    borderRadius: 2
-                }
-            },
-            formatter: function(params) {
-                if (index == 11) {
-                    index = 0;
-                }
-                index++;
-                if (index - 1 < 3) {
-                    return [
-                        '{a' + index + '|' + index + '}' + '  ' + params
-                    ].join('\n')
-                } else {
-                    return [
-                        '{b|' + index + '}' + '  ' + params
-                    ].join('\n')
-                }
-            }
-        }
-    },
-    series: [{
-            z: 2,
-            name: 'value',
-            type: 'bar',
-            data: [3.66, 2.86, 1.82, 1.8, 1.53, 1.47, 1.3, 1.25, 1.1, 1.02, 1].map((item, i) => {
-                itemStyle = {
-                    color: i > 3 ? colorList[3] : colorList[i]
-                }
-                return {
-                    value: item,
-                    itemStyle: itemStyle
-                };
-            }),
-            label: {
-                show: true,
-                position: 'right',
-                color: '#333333',
-                fontSize: 14,
-                offset: [10, 0]
-            }
-        }
+                toolbox: {
+                    show: true,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'value',
 
-    ]
-};
-                myChart.setOption(option);
-            }
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+
+                },
+                yAxis: {
+                    type: 'category',
+                    inverse: true,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            margin: 30
+                        }
+                    },
+                    data: ['杭州市', '宁波市', '温州市', '湖州市', '嘉兴市', '绍兴市', '金华市', '衢州市', '舟山市', '台州市', '丽水市'],
+                    axisLabel: {
+                        interval:0,
+                        margin: 100,
+                        fontSize: 14,
+                        align: 'left',
+                        color: '#333',
+                        rich: {
+                            a1: {
+                                color: '#fff',
+                                backgroundColor: colorList[0],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a2: {
+                                color: '#fff',
+                                backgroundColor: colorList[1],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a3: {
+                                color: '#fff',
+                                backgroundColor: colorList[2],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            b: {
+                                color: '#fff',
+                                backgroundColor: colorList[3],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            }
+                        },
+                        formatter: function(params) {
+                            if (index == 11) {
+                                index = 0;
+                            }
+                            index++;
+                            if (index - 1 < 3) {
+                                return [
+                                    '{a' + index + '|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            } else {
+                                return [
+                                    '{b|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            }
+                        }
+                    }
+                },
+                series: [{
+                        z: 2,
+                        name: 'value',
+                        type: 'bar',
+                        data: [3.66, 2.86, 1.82, 1.8, 1.53, 1.47, 1.3, 1.25, 1.1, 1.02, 1].map((item, i) => {
+                            itemStyle = {
+                                color: i > 3 ? colorList[3] : colorList[i]
+                            }
+                            return {
+                                value: item,
+                                itemStyle: itemStyle
+                            };
+                        }),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            color: '#333333',
+                            fontSize: 14,
+                            offset: [10, 0]
+                        }
+                    }
+
+                ]
+            };
+            myChart.setOption(option);
+        }
     </script>
 </body>
 </html>

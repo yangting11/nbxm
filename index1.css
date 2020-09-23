@@ -1,0 +1,60 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#mapid{
+    width:100vw;
+    height: 100vh;
+}
+.popup{
+    width:300px;
+    height:200px
+}
+.leaflet-popup-content{
+    width: 480px!important;
+}
+.rightBox{
+    position: absolute;
+    width: 600px;
+    height: 100vh;
+    top: 0px;
+    right: 0px;
+    background: #f5f5f5;
+    z-index: 99999;
+}
+.rightBoxHeader{
+    width: 100%;
+    height: 80px;
+    background: #548af5;
+    position: relative;
+}
+.rightBoxHeaderLeft .layui-form-item{
+    width: 240px!important;
+    float: left;
+}
+.rightBoxHeaderLeft .layui-input-block{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.rightBoxHeaderRight{
+    text-align: right;
+    width: 240px;
+    float: right;
+    padding: 4px 10px;
+}
+#showTime{
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    top: 4px;
+    right: 4px;
+}
+.showDetail{
+    line-height: 80px;
+    color: #07183a;
+}
+.rightBoxBody{
+    width: 100%;
+    height: calc(100% - 80px);
+}
