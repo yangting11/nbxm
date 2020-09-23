@@ -34,16 +34,109 @@
                 <div class="showDetail">查看详细情况</div>
             </div>
         </div>
-        <div class="rightBoxBody"></div>
+        <div class="rightBoxBody">
+            <div class="rightBoxBodyTop">
+                <form class="layui-form layui-row" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">短输入框</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">信息</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">数据信息</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="rightBoxBodyContent">
+                <form class="layui-form layui-row" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证手机</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证邮箱</label>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">多规则验证</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证</label>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">多规则验证</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="rightBoxBodyContent">
+                <form class="layui-form layui-row" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证手机</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证邮箱</label>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">多规则验证</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">验证</label>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">多规则验证</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">单位</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
     </div>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="./layuiadmin/layui/layui.all.js"></script>
     <script>
+        document.getElementById("showTime").innerHTML=transTime(new Date());
         setInterval(function(){
             document.getElementById("showTime").innerHTML=transTime(new Date());
         },1000)
         layui.config({
-            base: '../../layuiadmin/' //静态资源所在路径
+            base: './layuiadmin/' //静态资源所在路径
         }).extend({
             index: 'lib/index' //主入口模块
         }).use(['index', 'sample']);

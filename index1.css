@@ -3,6 +3,9 @@
     padding: 0px;
     margin: 0px;
 }
+body{
+    overflow: hidden;
+}
 #mapid{
     width:100vw;
     height: 100vh;
@@ -20,14 +23,13 @@
     height: 100vh;
     top: 0px;
     right: 0px;
-    background: #f5f5f5;
+    background: #f3f3f3;
     z-index: 99999;
 }
 .rightBoxHeader{
     width: 100%;
     height: 80px;
     background: #548af5;
-    position: relative;
 }
 .rightBoxHeaderLeft .layui-form-item{
     width: 240px!important;
@@ -42,19 +44,43 @@
     width: 240px;
     float: right;
     padding: 4px 10px;
+    position: relative;
 }
 #showTime{
     position: absolute;
+    width: 200px;
+    height: 30px;
     color: #fff;
     font-size: 14px;
     top: 4px;
-    right: 4px;
+    right: 10px;
 }
 .showDetail{
     line-height: 80px;
     color: #07183a;
+    cursor: pointer;
 }
 .rightBoxBody{
     width: 100%;
     height: calc(100% - 80px);
+}
+.rightBoxBodyTop{
+    text-align: left;
+    box-sizing: border-box;
+}
+.rightBoxBodyTop .layui-form-label{
+    width: 60px;
+}
+.rightBoxBodyTop .layui-form-item{
+    margin: 5px;
+}
+.rightBoxBodyContent{
+    margin-bottom: 6px;
+    background: #fff;
+}
+.rightBoxBodyContent .layui-form-label{
+    width: 70px;
+}
+.rightBoxBodyContent .layui-form-item{
+    margin: 5px;
 }
