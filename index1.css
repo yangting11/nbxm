@@ -167,16 +167,17 @@ body{
 }
 .form-btn{
     position: absolute;
-    top: 18px;
-    left: 268px;
-    width: 42px;
+    top: 20px;
+    left: 286px;
+    width: 21px;
     height: 80px;
+    line-height: 20px;
     word-wrap: break-word;
     word-break: break-all;
     white-space: normal;
 }
 .rightBoxBodyContentWith .layui-btn{
-    padding: 0px 2px!important;
+    padding: 0px 4px!important;
 }
 .rightBoxBodyContent .layui-inline{
     width: 300px;
@@ -185,16 +186,17 @@ body{
     width: 150px;
 }
 .rightBoxBodyContentWith .layui-inline{
-    width: 280px;
+    width: 300px;
 }
 .rightBoxBodyContentWith .layui-input-inline{
-    width: 110px;
+    width: 130px;
 }
 .rightBoxBodyContentWith .layui-inline:nth-child(even){
-    width: 210px;
+    width: 200px;
 }
 .rightBoxBodyContentWith .layui-inline:nth-child(even) .layui-form-label{
     width: 0px;
+    padding: 0px;
 }
 .greenBgSpan{
     border-bottom: 1px solid #6df18a;
@@ -219,5 +221,23 @@ body{
 }
 .rightBoxBodyTop .lineInput>input{
     background: #f5f5f5;
+    border-radius: 0px;
     border-bottom: 1px solid green;
+}
+.leaflet-label{
+    width: 100px;
+    text-align: center;
+    border: 1px solid #259feb;
+    padding: 0px;
+}
+.blueBlock{
+    background:#259feb;
+    color: #fff;
+}
+.leaflet-label div div{
+    height: 24px;
+    line-height: 24px;
+}
+.leaflet-tooltip-top:before{
+    border-top-color: transparent!important;
 }
