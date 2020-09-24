@@ -16,6 +16,38 @@
         .dataAction{
             float: right;
         }
+        .footerLeft{
+          float: left;
+        }
+        .footerLeft input,.footerLeft button{
+          display: inline-block;
+          margin: 4px 0px;
+        }
+        .footerLeft .layui-btn{
+          padding: 0px;
+        }
+        .layui-btn1{
+          height: 38px;
+          line-height: 15px;
+          padding-bottom: 20px!important;
+        }
+        .layui-btn2{
+          height: 38px;
+          line-height: 15px;
+          padding-top: 20px!important;
+        }
+        /* .footerLeft .layui-btn:nth-child(2){
+          height: 38px;
+          line-height: 15px;
+          padding-top: 20px;
+        } */
+        .footerRight{
+          float: right;
+          text-align: right;
+        }
+        .footerLeft .layui-btn+.layui-btn{
+          margin-left: 0px;
+        }
     </style>
 </head>
 <body>
@@ -25,22 +57,30 @@
               <button class="layui-btn">
                 <i class="layui-icon layui-icon-picture" style="font-size: 24px; color: #fff;"></i>  
               </button>
-              <button class="layui-btn ">
-                <i class="layui-icon layui-icon-table" style="font-size: 24px; color: #fff;"></i>  
+              <button class="layui-btn layui-btn-primary">
+                <i class="layui-icon layui-icon-table" style="font-size: 24px; color: #333;"></i>  
               </button>
               
             </div>
             <div class="layui-btn-group dataAction">
-                <button class="layui-btn">
-                  <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #fff;"></i>  
+                <button class="layui-btn layui-btn-primary">
+                  <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #333;"></i>  
                 </button>
-                <button class="layui-btn ">
-                  <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #fff;"></i>  
+                <button class="layui-btn layui-btn-primary">
+                  <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>  
                 </button>
                 layui-icon-print
               </div>
         </div>
         <table class="layui-hide" id="test-table-simple"></table>
+        <div class="tableFooter">
+          <div class="footerLeft">
+            <input type="text" name="" style="width:200px" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"><button class="layui-btn layui-btn1 layui-btn-normal">←</button><button class="layui-btn layui-btn2 layui-btn-danger">→</button><input type="text" style="width:200px" name="" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+          </div>
+          <div class="footerRight">
+            <button class="layui-btn layui-btn-normal">确定</button>
+          </div>
+        </div>
     </div>
     <script src="../layuiadmin/layui/layui.all.js"></script>
     <script>

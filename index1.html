@@ -15,7 +15,7 @@
     <div class="rightBox" id="rightBox">
         <div class="rightBoxAll">
             <div class="toogleBox" onclick="clickToogle()">
-                <img id="toogleImg" src="./public/img/right.png" alt="向右">
+                <img id="toogleImg" src="./public/img/left.png" alt="向右">
             </div>
             <div class="rightBoxHeader">
                 <div class="rightBoxHeaderLeft">
@@ -52,6 +52,9 @@
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label">数据信息</label>
+                                <div class="layui-input-inline lineInput">
+                                    <input type="text" name="" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -107,7 +110,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="rightBoxBodyContent">
+                <div class="rightBoxBodyContent rightBoxBodyContentWith">
                     <div class="rightBoxBodyContentTitle greenBgSpan">
                         <span>
                             <img src="./public/img/大饼图.png" alt="">
@@ -124,7 +127,7 @@
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">验证邮箱</label>
+                                <label class="layui-form-label"></label>
                                 <div class="layui-input-inline lineInput">
                                     <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
@@ -140,25 +143,17 @@
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">验证</label>
+                                <label class="layui-form-label"></label>
                                 <div class="layui-input-inline lineInput">
                                     <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">多规则验证</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid layui-word-aux">单位</div>
-                            </div>
-                        </div>
+                        <button type="button" class="layui-btn form-btn">默认按钮</button>
                     </form>
                 </div>
-                <div class="rightBoxBodyContent">
+                <div class="rightBoxBodyContent rightBoxBodyContentWith">
                     <div class="rightBoxBodyContentTitle yellowBgSpan">
                         <span>
                             <img src="./public/img/大饼图.png" alt="">
@@ -175,7 +170,7 @@
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">验证邮箱</label>
+                                <label class="layui-form-label"></label>
                                 <div class="layui-input-inline lineInput">
                                     <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
@@ -191,22 +186,14 @@
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">验证</label>
+                                <label class="layui-form-label"></label>
                                 <div class="layui-input-inline lineInput">
                                     <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">单位</div>
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">多规则验证</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-form-mid layui-word-aux">单位</div>
-                            </div>
-                        </div>
+                        <button type="button" class="layui-btn layui-btn-warm form-btn">默认按钮</button>
                     </form>
                 </div>
                 <div class="desc">
@@ -218,7 +205,7 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="./layuiadmin/layui/layui.all.js"></script>
     <script>
-        var ifOpen=true;
+        var ifOpen=false;
         document.getElementById("showTime").innerHTML=transTime(new Date());
         setInterval(function(){
             document.getElementById("showTime").innerHTML=transTime(new Date());
@@ -243,13 +230,18 @@
                 subdomains: "1234"
             });
             map.addLayer(baseLayer);
-            var marker = L.marker([37, 114.45]).addTo(map);
+            var marker = L.marker([37, 114.45]).bindTooltip("<div><div>数据数据</div><div>#01AAED</div></div>",{permament:true,opacity:1,direction:'auto',offset:[0,10],className:'leaflet-label'}).openTooltip().addTo(map);
             marker.on('click',e=>{
-                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:520px;height:420px">
-                        <div id="chartid" style="width:500px;height:400px"></div>
+                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:480px;height:330px">
+                        <div id="chartid" style="width:500px;height:360px"></div>
+                        <div class="closePopup" id="closePopup">
+                            <i class="layui-icon layui-icon-close-fill" style="font-size: 30px; color: #1E9FFF;"></i>  </div>
                 </div>`);
                 map.openPopup(popup)  
-                echart()
+                echart();
+                $("#closePopup").on('click',function(){
+                    map.closePopup();
+                })
                 map.flyTo([e.latlng.lat,e.latlng.lng],13)
             })     
         }
@@ -270,7 +262,9 @@
                     show: false
                 },
                 grid: {
-                    left: 100
+                    left: 100,
+                    top:0,
+                    bottom:30
                 },
                 toolbox: {
                     show: false,
@@ -354,13 +348,17 @@
                         formatter: function(params) {
                             if (index == 5) {
                                 index = 0;
+                                return
                             }
-                            index++;
+                            index=index+1;
                             if (index - 1 < 3) {
+                                console.log('{a' + index + '|' + index + '}' + '  ' + params)
                                 return [
                                     '{a' + index + '|' + index + '}' + '  ' + params
                                 ].join('\n')
                             } else {
+                                console.log('{b|' + index + '}' + '  ' + params)
+
                                 return [
                                     '{b|' + index + '}' + '  ' + params
                                 ].join('\n')
