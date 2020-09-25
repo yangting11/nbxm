@@ -41,10 +41,10 @@
             </div>
             <div class="rightBoxBody">
                 <div class="rightBoxBodyTop">
-                    <form class="layui-form layui-row" action="">
+                    <form class="layui-form " action="">
                         <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">短输入框</label>
+                            <div class="layui-inline layui-form-pane" style="width: 360px;">
+                                <label class="layui-form-label" style="width: 100px;">短输入框</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                                 </div>
@@ -244,6 +244,9 @@
             map.addLayer(baseLayer);
             var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
             marker.on('click',e=>{
+                if($("#chartid").length >0){
+                    return
+                }
                 var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:480px;height:330px">
                         <div id="chartid" style="width:500px;height:360px"></div>
                         <div class="closePopup" id="closePopup">

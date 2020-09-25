@@ -169,15 +169,15 @@ body{
     position: absolute;
     top: 20px;
     left: 286px;
-    width: 21px;
-    height: 80px;
+    width: 26px;
+    height: 84px;
     line-height: 20px;
     word-wrap: break-word;
     word-break: break-all;
     white-space: normal;
 }
 .rightBoxBodyContentWith .layui-btn{
-    padding: 0px 4px!important;
+    padding: 2px 6px!important;
 }
 .rightBoxBodyContent .layui-inline{
     width: 300px;

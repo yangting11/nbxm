@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+    <script src="../echarts.min.js"></script>
     <title>Document</title>
     <style>
         .tableDetail{
@@ -29,11 +30,15 @@
         .layui-btn1{
           height: 38px;
           line-height: 15px;
+          width: 20px;
+          padding: 4px 0px;
           padding-bottom: 20px!important;
         }
         .layui-btn2{
           height: 38px;
           line-height: 15px;
+          width: 20px;
+          padding: 4px 0px;
           padding-top: 20px!important;
         }
         /* .footerLeft .layui-btn:nth-child(2){
@@ -48,16 +53,24 @@
         .footerLeft .layui-btn+.layui-btn{
           margin-left: 0px;
         }
+        .showTable{
+            display:block;
+        }
+        #myEchart{
+            width: 1000px;
+            height: 400px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="tableDetail">
         <div class="layui-btn-container">
             <div class="layui-btn-group viewAction">
-              <button class="layui-btn">
+              <button class="layui-btn detailType" type="1">
                 <i class="layui-icon layui-icon-picture" style="font-size: 24px; color: #fff;"></i>  
               </button>
-              <button class="layui-btn layui-btn-primary">
+              <button class="layui-btn detailType layui-btn-primary" type="2">
                 <i class="layui-icon layui-icon-table" style="font-size: 24px; color: #333;"></i>  
               </button>
               
@@ -72,15 +85,18 @@
                 layui-icon-print
               </div>
         </div>
-        <table class="layui-hide" id="test-table-simple"></table>
-        <div class="tableFooter">
-          <div class="footerLeft">
-            <input type="text" name="" style="width:200px" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"><button class="layui-btn layui-btn1 layui-btn-normal">←</button><button class="layui-btn layui-btn2 layui-btn-danger">→</button><input type="text" style="width:200px" name="" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-          </div>
-          <div class="footerRight">
-            <button class="layui-btn layui-btn-normal">确定</button>
-          </div>
+        <div class="showTable">
+            <table class="layui-hide" id="test-table-simple"></table>
+            <div class="tableFooter">
+            <div class="footerLeft">
+                <input type="text" name="" style="width:200px" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"><button class="layui-btn layui-btn1 layui-btn-normal">←</button><button class="layui-btn layui-btn2 layui-btn-danger">→</button><input type="text" style="width:200px" name="" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+            <div class="footerRight">
+                <button class="layui-btn layui-btn-normal">确定</button>
+            </div>
+            </div>
         </div>
+        <div id="myEchart"></div>
     </div>
     <script src="../layuiadmin/layui/layui.all.js"></script>
     <script>
@@ -112,6 +128,114 @@
         ,{field:'wealth', width:137, title: '财富', sort: true}
       ]]
     });
+    $(".detailType").on('click',function(){
+        if($(this).hasClass('layui-btn-primary')){
+            $(".detailType").addClass('layui-btn-primary');
+            $(".detailType i").css('color','#333');
+            $(this).removeClass('layui-btn-primary');
+            $(this).find('i').css('color','#fff');
+            if($(this).attr('type')==2){
+                $(".showTable").css('display','none');
+                $("#myEchart").css('display','block');
+                drawEchart()
+            }else{
+                $("#myEchart").css('display','none');
+                $(".showTable").css('display','block');
+            }
+        }
+    })
+
+    function drawEchart(){
+        var myChart = echarts.init(document.getElementById("myEchart"));
+            // 指定图表的配置项和数据
+            var index = 0;
+            var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
+            var option = {
+                title: {
+                    text: '堆叠区域图'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '邮件营销',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name: '联盟广告',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name: '视频广告',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name: '直接访问',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name: '搜索引擎',
+                        type: 'line',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
+                        },
+                        areaStyle: {},
+                        data: [820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        }
     </script>
 </body>
 </html>
