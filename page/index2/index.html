@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="../../echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index.css" rel="stylesheet"></link>
+    <title>Document</title>
+</head>
+<body>
+    <div id="mapid"></div>
+    <div class="rightBox" id="rightBox">
+        <div class="rightBoxAll">
+            <div class="toogleBox" onclick="clickToogle()">
+                <img id="toogleImg" src="../../public/img/left.png" alt="向右">
+            </div>
+            <div class="rightBoxHeader">
+                <div class="rightBoxHeaderLeft">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">北京</option>
+                                    <option value="1">上海</option>
+                                    <option value="2">广州</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxHeaderRight">
+                    <div id="showTime"></div>
+                    <div class="showDetail" onclick="showDetail()">查看详细情况</div>
+                </div>
+            </div>
+            <div class="rightBoxBody">
+                <div class="desc">
+                    备注：根据layui框架
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        var ifOpen=false;
+        document.getElementById("showTime").innerHTML=transTime(new Date());
+        setInterval(function(){
+            document.getElementById("showTime").innerHTML=transTime(new Date());
+        },1000)
+        // layui.config({
+        //     base: './layuiadmin/' //静态资源所在路径
+        // }).extend({
+        //     index: 'lib/index' //主入口模块
+        // }).use(['index', 'sample']);
+        var layer = layui.layer;
+        var table = layui.table;
+        var map = map;
+        initMap();
+        function initMap(){
+            map = L.map("mapid", {
+                center: [37.005646, 114.52044],
+                zoom: 11,
+                fullscreenControl: false,
+                zoomControl: false,
+                attributionControl: false
+            });
+            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
+                subdomains: "1234"
+            });
+            map.addLayer(baseLayer);
+            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div id='charttool'></div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,120],className:'leaflet-label'}).openTooltip();
+            marker.on('click',e=>{
+                if($("#chartid").length >0){
+                    return
+                }
+                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:480px;height:330px">
+                    <div class="popupHeader">
+                        弹出层3 <i class="layui-icon layui-icon-close-fill" style="font-size: 30px; color: #1E9FFF;"></i>
+                    </div>
+                    <div class="popupTable" id="popupTable"></div>
+                </div>`);
+                map.openPopup(popup);
+                table.render({
+                    elem: '#popupTable',
+                    data:[
+                        {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                        {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                        {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                    ],
+                    cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                    cols: [[
+                        {field:'id', width:80, title: 'ID', sort: true}
+                        ,{field:'username', width:80, title: '用户名'}
+                        ,{field:'sex', width:80, title: '性别', sort: true}
+                        ,{field:'city', width:80, title: '城市'}
+                        ,{field:'sign', title: '签名', width: 120, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                        ,{field:'experience', title: '积分', sort: true}
+                        ,{field:'score', title: '评分', sort: true}
+                        ,{field:'classify', title: '职业'}
+                        ,{field:'wealth', width:137, title: '财富', sort: true}
+                    ]]
+                });
+                echart();
+                $("#closePopup").on('click',function(){
+                    map.closePopup();
+                })
+                map.flyTo([e.latlng.lat,e.latlng.lng],13)
+            }) 
+            toolEchart()    
+        }
+        function echart() {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById("chartid"));
+            // 指定图表的配置项和数据
+            var index = 0;
+            var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    left: 100,
+                    top:0,
+                    bottom:30
+                },
+                toolbox: {
+                    show: false,
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'value',
+
+                    splitLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+
+                },
+                yAxis: {
+                    type: 'category',
+                    inverse: true,
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            margin: 30
+                        }
+                    },
+                    data: ['杭州市', '宁波市', '温州市', '湖州市', '嘉兴市'],
+                    axisLabel: {
+                        interval:0,
+                        margin: 100,
+                        fontSize: 14,
+                        align: 'left',
+                        color: '#333',
+                        rich: {
+                            a1: {
+                                color: '#fff',
+                                backgroundColor: colorList[0],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a2: {
+                                color: '#fff',
+                                backgroundColor: colorList[1],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            a3: {
+                                color: '#fff',
+                                backgroundColor: colorList[2],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            b: {
+                                color: '#fff',
+                                backgroundColor: colorList[3],
+                                width: 30,
+                                height: 30,
+                                align: 'center',
+                                borderRadius: 2
+                            }
+                        },
+                        formatter: function(params) {
+                            if (index == 5) {
+                                index = 0;
+                                return
+                            }
+                            index=index+1;
+                            if (index - 1 < 3) {
+                                console.log('{a' + index + '|' + index + '}' + '  ' + params)
+                                return [
+                                    '{a' + index + '|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            } else {
+                                console.log('{b|' + index + '}' + '  ' + params)
+
+                                return [
+                                    '{b|' + index + '}' + '  ' + params
+                                ].join('\n')
+                            }
+                        }
+                    }
+                },
+                series: [{
+                        z: 2,
+                        name: 'value',
+                        type: 'bar',
+                        data: [3.66, 2.86, 1.82, 1.8, 1.53].map((item, i) => {
+                            itemStyle = {
+                                color: i > 3 ? colorList[3] : colorList[i]
+                            }
+                            return {
+                                value: item,
+                                itemStyle: itemStyle
+                            };
+                        }),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            color: '#333333',
+                            fontSize: 14,
+                            offset: [10, 0]
+                        }
+                    }
+
+                ]
+            };
+            myChart.setOption(option);
+        }
+        function toolEchart(){
+            var myChart = echarts.init(document.getElementById("charttool"));
+            var data = {
+                value: 76,
+            };
+            var option = {
+                backgroundColor: '#0B2C6F',
+                title: {
+                    text: '{num|' + data.value + '%}',
+                    x: '49%',
+                    y: '49%',
+                    textAlign: 'center',
+                    textStyle: {
+                        rich: {
+                            num: {
+                                fontWeight: '500',
+                                color: '#00E4FF',
+                                fontFamily: '微软雅黑',
+                                fontSize: 20,
+                            },
+                        }
+
+                    },
+                },
+                data: [{
+                    name: data.name,
+                }],
+                series: [{ // 主圆环
+                    name: data.name,
+                    type: 'pie',
+                    radius: ['135%', '150%'],
+                    center:['50%','90%'],
+                    startAngle: 180,
+                    endAngle: 0,
+
+                    color: [{
+                        type: 'linear',
+                        x: 1,
+                        y: 0,
+                        x2: 0,
+                        y2: 0,
+                        colorStops: [{
+                            offset: 0,
+                            color: 'rgba(45,246,242,.1)' // 0% 处的颜色
+                        }, {
+                            offset: 1,
+                            color: 'rgba(45,246,242,1)' // 100% 处的颜色
+                        }]
+                    }, 'transparent'],
+                    hoverAnimation: true,
+                    legendHoverLink: false,
+                    z: 10,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [{
+                        value: 50 * data.value / 100
+                    }, {
+                        value: 100 - (50 * data.value / 100)
+                    }]
+                }, { // 中间圈
+                    name: '',
+                    z: 5,
+                    type: 'pie',
+                    cursor: 'default',
+                    radius: ['155%', '155%'],
+                    center:['50%','90%'],
+                    startAngle: 180,
+                    hoverAnimation: false,
+                    legendHoverLink: false,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+
+                    data: [{
+                        value: 50,
+                        itemStyle: {
+                            borderColor: '#2DF6F3',
+                            borderType: 'dashed',
+                            borderWidth: 2,
+                        }
+                    }, {
+                        value: 50,
+                        itemStyle: {
+                            color: 'transparent'
+                        }
+                    }]
+                }]
+            };
+            myChart.setOption(option);
+        }
+        function transTime(time){
+            let year = time.getFullYear();
+            let month = formatTime(time.getMonth()+1);
+            let day = formatTime(time.getDate());
+            let hour = formatTime(time.getHours());
+            let min = formatTime(time.getMinutes());
+            let sec = formatTime(time.getSeconds());
+            return year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec
+        }
+        function formatTime(time){
+            return time<10?'0'+time:time
+        }
+        function clickToogle(){
+            if(ifOpen){
+                $("#toogleImg").attr('src','../../public/img/left.png')
+                $("#rightBox").css('right','-710px')
+            }else{
+                $("#toogleImg").attr('src','../../public/img/right.png');
+                $("#rightBox").css('right','0px')
+
+            }
+            ifOpen=!ifOpen;
+        }
+        function showDetail(){
+            layer.open({
+                title:'初体验',
+                type: 1,
+                //,skin: 'layui-layer-rim'
+                shadeClose: true,
+                area:['1040px', '631px'],
+                content: '<iframe style="border:none;outline:none;width:100%;height:580px" src="../../component/tableDetail.html"></iframe>'
+            });
+        }
+    </script>
+</body>
+</html>

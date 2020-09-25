@@ -1,0 +1,145 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    overflow: hidden;
+}
+#mapid{
+    width:100vw;
+    height: 100vh;
+}
+.popup{
+    width:300px;
+    height:200px;
+    position: relative;
+}
+.closePopup{
+    position: absolute;
+    top: -34px;
+    right: -38px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 20px;
+}
+.closePopup i{
+    margin-left: -7px;
+}
+.leaflet-popup-content-wrapper{
+    border:10px solid #539a81;
+    border-radius: 4px;
+}
+.leaflet-popup-tip{
+    background: #539a81;
+}
+.leaflet-popup-close-button{
+    display: none;
+}
+.leaflet-popup-content{
+    width: 480px!important;
+}
+.leaflet-zoom-animated{
+    bottom: 20px!important;
+}
+.rightBox{
+    position: absolute;
+    width: 700px;
+    height: 100vh;
+    top: 0px;
+    right: -710px;
+    transition: all 0.5s linear;
+    background: #f3f3f3;
+    z-index: 99999;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.rightBoxAll{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.toogleBox{
+    position: absolute;
+    width: 30px;
+    background: #e5e5e5;
+    border-radius: 6px 0px 0px 6px;
+    height: 80px;
+    top: 40%;
+    left: -30px;
+    text-align: center;
+}
+.toogleBox img{
+    margin-top: 26px;
+    height: 24px;
+}
+.rightBoxHeader{
+    width: 100%;
+    height: 80px;
+    background: #548af5;
+}
+.rightBoxHeaderLeft .layui-form-item{
+    width: 240px!important;
+    float: left;
+}
+.rightBoxHeaderLeft .layui-input-block{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.rightBoxHeaderRight{
+    text-align: right;
+    width: 240px;
+    float: right;
+    padding: 4px 10px;
+    position: relative;
+}
+#showTime{
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+    top: 4px;
+    right: 10px;
+}
+.showDetail{
+    line-height: 80px;
+    color: #07183a;
+    cursor: pointer;
+}
+.rightBoxBody{
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100% - 80px);
+}
+.rightBoxBody::-webkit-scrollbar{
+    width: 0px;
+}
+.desc{
+    height: 30px;
+    line-height: 30px;
+}
+.leaflet-label{
+    width: 137px;
+    text-align: center;
+    border: 1px solid #259feb;
+    padding: 0px;
+}
+.blueBlock{
+    background:#259feb;
+    color: #fff;
+}
+.leaflet-label div div{
+    height: 24px;
+    line-height: 24px;
+}
+#charttool{
+    width: 137px;
+    height: 69px;
+}
+.leaflet-tooltip-top:before{
+    border-top-color: transparent!important;
+}

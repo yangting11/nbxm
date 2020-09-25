@@ -10,6 +10,9 @@
     <style>
         .tableDetail{
             padding: 10px;
+            width: 1020px;
+            height: 560px;
+            position: relative;
         }
         .viewAction{
             display: inline-block;
@@ -20,10 +23,11 @@
         .footerLeft{
           float: left;
         }
-        .footerLeft input,.footerLeft button{
+        .footerLeft input,.footerLeft button,.footerRight button{
           display: inline-block;
           margin: 4px 0px;
         }
+        
         .footerLeft .layui-btn{
           padding: 0px;
         }
@@ -46,6 +50,11 @@
           line-height: 15px;
           padding-top: 20px;
         } */
+        .tableFooter{
+            position: absolute;
+            width: 1010px;
+            bottom: 0px;
+        }
         .footerRight{
           float: right;
           text-align: right;
@@ -58,7 +67,7 @@
         }
         #myEchart{
             width: 1000px;
-            height: 400px;
+            height: 480px;
             display: none;
         }
     </style>
@@ -87,16 +96,16 @@
         </div>
         <div class="showTable">
             <table class="layui-hide" id="test-table-simple"></table>
-            <div class="tableFooter">
+        </div>
+        <div id="myEchart"></div>
+        <div class="tableFooter">
             <div class="footerLeft">
                 <input type="text" name="" style="width:200px" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"><button class="layui-btn layui-btn1 layui-btn-normal">←</button><button class="layui-btn layui-btn2 layui-btn-danger">→</button><input type="text" style="width:200px" name="" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
             <div class="footerRight">
                 <button class="layui-btn layui-btn-normal">确定</button>
             </div>
-            </div>
         </div>
-        <div id="myEchart"></div>
     </div>
     <script src="../layuiadmin/layui/layui.all.js"></script>
     <script>
@@ -121,7 +130,7 @@
         ,{field:'username', width:80, title: '用户名'}
         ,{field:'sex', width:80, title: '性别', sort: true}
         ,{field:'city', width:80, title: '城市'}
-        ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+        ,{field:'sign', title: '签名', width: 120, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
         ,{field:'experience', title: '积分', sort: true}
         ,{field:'score', title: '评分', sort: true}
         ,{field:'classify', title: '职业'}
@@ -166,15 +175,10 @@
                 legend: {
                     data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
                 },
-                toolbox: {
-                    feature: {
-                        saveAsImage: {}
-                    }
-                },
                 grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
+                    left: '20',
+                    right: '15',
+                    bottom: '20',
                     containLabel: true
                 },
                 xAxis: [

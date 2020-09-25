@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <script src="./echarts.min.js"></script>
+    <script src="../../echarts.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="./layuiadmin/layui/css/layui.css" media="all">
-    <link href="./index1.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index.css" rel="stylesheet"></link>
     <title>Document</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="rightBox" id="rightBox">
         <div class="rightBoxAll">
             <div class="toogleBox" onclick="clickToogle()">
-                <img id="toogleImg" src="./public/img/left.png" alt="向右">
+                <img id="toogleImg" src="../../public/img/left.png" alt="向右">
             </div>
             <div class="rightBoxHeader">
                 <div class="rightBoxHeaderLeft">
@@ -62,7 +62,7 @@
                 <div class="rightBoxBodyContent">
                     <div class="rightBoxBodyContentTitle">
                         <span>
-                            <img src="./public/img/大饼图.png" alt="">
+                            <img src="../../public/img/大饼图.png" alt="">
                         </span>
                         数据信息1
                     </div>
@@ -113,7 +113,7 @@
                 <div class="rightBoxBodyContent rightBoxBodyContentWith">
                     <div class="rightBoxBodyContentTitle greenBgSpan">
                         <span>
-                            <img src="./public/img/大饼图.png" alt="">
+                            <img src="../../public/img/大饼图.png" alt="">
                         </span>
                         数据信息1
                     </div>
@@ -162,7 +162,7 @@
                 <div class="rightBoxBodyContent rightBoxBodyContentWith">
                     <div class="rightBoxBodyContentTitle yellowBgSpan">
                         <span>
-                            <img src="./public/img/大饼图.png" alt="">
+                            <img src="../../public/img/大饼图.png" alt="">
                         </span>
                         数据信息1
                     </div>
@@ -215,7 +215,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-    <script src="./layuiadmin/layui/layui.all.js"></script>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
         var ifOpen=false;
         document.getElementById("showTime").innerHTML=transTime(new Date());
@@ -421,10 +421,10 @@
         }
         function clickToogle(){
             if(ifOpen){
-                $("#toogleImg").attr('src','./public/img/left.png')
+                $("#toogleImg").attr('src','../../public/img/left.png')
                 $("#rightBox").css('right','-710px')
             }else{
-                $("#toogleImg").attr('src','./public/img/right.png');
+                $("#toogleImg").attr('src','../../public/img/right.png');
                 $("#rightBox").css('right','0px')
 
             }
@@ -436,8 +436,8 @@
                 type: 1,
                 //,skin: 'layui-layer-rim'
                 shadeClose: true,
-                area:['1040px', 'auto'],
-                content: '<iframe style="border:none;outline:none;width:100%;height:450px" src="./component/tableDetail.html"></iframe>'
+                area:['1040px', '631px'],
+                content: '<iframe style="border:none;outline:none;width:100%;height:580px" src="../../component/tableDetail.html"></iframe>'
             });
         }
     </script>
