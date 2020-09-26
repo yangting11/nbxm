@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <script src="../../echarts.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            padding: 5px 10px;
+        }
+
+        .layui-form-item {
+            margin-bottom: 6px;
+        }
+
+        .tableDetail {
+            width: 715px;
+            height: 360px;
+            position: relative;
+        }
+
+        .viewAction {
+            display: inline-block;
+        }
+
+        .dataAction {
+            float: right;
+        }
+
+        .footerLeft {
+            float: left;
+        }
+
+        .footerLeft input,
+        .footerLeft button,
+        .footerRight button {
+            display: inline-block;
+            margin: 4px 0px;
+        }
+
+        .footerLeft .layui-btn {
+            padding: 0px;
+        }
+
+        .layui-btn1 {
+            height: 38px;
+            line-height: 15px;
+            width: 20px;
+            padding: 4px 0px;
+            padding-bottom: 20px !important;
+        }
+
+        .layui-btn2 {
+            height: 38px;
+            line-height: 15px;
+            width: 20px;
+            padding: 4px 0px;
+            padding-top: 20px !important;
+        }
+
+        /* .footerLeft .layui-btn:nth-child(2){
+          height: 38px;
+          line-height: 15px;
+          padding-top: 20px;
+        } */
+        .tableFooter {
+            position: absolute;
+            width: 610px;
+            bottom: 0px;
+        }
+
+        .footerRight {
+            float: right;
+            text-align: right;
+        }
+
+        .footerLeft .layui-btn+.layui-btn {
+            margin-left: 0px;
+        }
+
+        .showTable {
+            display: block;
+        }
+
+        #myEchart {
+            width: 680px;
+            height: 420px;
+            display: none;
+        }
+
+        .detailType:hover,
+        .dataAction>button:hover {
+            background-color: #1E9FFF;
+        }
+        .detailType:hover i,
+        .dataAction>button:hover i {
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline" style="width:160px">
+                <div class="layui-input-inline">
+                    <input type="radio" name="sex" value="男" title="男">
+                    <input type="radio" name="sex" value="女" title="女">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="test-laydate-start" placeholder="yyyy-MM-dd">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="test-laydate-end" placeholder="yyyy-MM-dd">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-normal">百搭按钮</button>
+            </div>
+        </div>
+    </form>
+    <div class="tableDetail">
+        <div class="layui-btn-container">
+            <div class="layui-btn-group viewAction">
+                <button class="layui-btn detailType layui-btn-primary" style="padding: 0px 14px!important;" type="0">
+                    <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>
+                </button>
+                <button class="layui-btn detailType layui-btn-primary" type="1">
+                    <i class="layui-icon layui-icon-picture" style="font-size: 24px;"></i>
+                </button>
+
+            </div>
+            <div class="layui-btn-group dataAction">
+                <button class="layui-btn layui-btn-primary">
+                    <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #333;"></i>
+                </button>
+                <button class="layui-btn layui-btn-primary">
+                    <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>
+                </button>
+            </div>
+        </div>
+        <div class="showTable">
+            <table class="layui-hide" id="test-table-simple"></table>
+        </div>
+        <div id="myEchart"></div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        table = layui.table;
+        laydate = layui.laydate;
+        laydate.render({
+            elem: '#test-laydate-start'
+        });
+        laydate.render({
+            elem: '#test-laydate-end'
+        });
+        $(".detailType").eq(0).css('background', '#1E9FFF');
+        $(".detailType").eq(0).find('i').css('color', '#fff');
+        table.render({
+            elem: '#test-table-simple',
+            data: [
+                { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
+                { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
+                { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+            ],
+            cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            cols: [[
+                { field: 'id', title: 'ID', sort: true }
+                , { field: 'username', title: '用户名' }
+                , { field: 'sex', title: '性别' }
+                , { field: 'city', title: '城市' }
+                , { field: 'sign', title: '签名' } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                , { field: 'experience', title: '积分', sort: true }
+                , { field: 'score', title: '评分', sort: true }
+                , { field: 'classify', title: '职业' }
+                , { field: 'wealth', title: '财富', sort: true }
+            ]]
+        })
+        $(".detailType").on('click', function () {
+            if ($(this).attr('type') == 0) {
+                $(".detailType").eq(0).css('background', '#1E9FFF');
+                $(".detailType").eq(0).find('i').css('color', '#fff');
+                $(".detailType").eq(1).css('background', '');
+                $(".detailType").eq(1).find('i').css('color', '');
+                $(".showTable").css('display', 'block');
+                $("#myEchart").css('display', 'none');
+            } else {
+                $(".detailType").eq(1).css('background', '#1E9FFF');
+                $(".detailType").eq(1).find('i').css('color', '#fff');
+                $(".detailType").eq(0).css('background', '');
+                $(".detailType").eq(0).find('i').css('color', '');
+                $("#myEchart").css('display', 'block');
+                $(".showTable").css('display', 'none');
+                drawEchart()
+            }
+        })
+        function drawEchart() {
+            var myChart = echarts.init(document.getElementById("myEchart"));
+            // 指定图表的配置项和数据
+            var index = 0;
+            var colorList = ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'];
+            var option = {
+                title: {
+                    text: '堆叠区域图'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+                },
+                grid: {
+                    left: '20',
+                    right: '15',
+                    bottom: '20',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '邮件营销',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name: '联盟广告',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name: '视频广告',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name: '直接访问',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: [320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name: '搜索引擎',
+                        type: 'line',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
+                        },
+                        areaStyle: {},
+                        data: [820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>

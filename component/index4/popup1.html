@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <title>Document</title>
+    <style>
+        .layui-form-item{
+            margin: 0px;
+            padding: 10px;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        .layui-form-mid{
+            padding: 0px!important;
+        }
+        .addBorder{
+            width: 80px!important;
+            height: 38px;
+            line-height: 28px;
+            border-top: 1px solid #e6e6e6;
+            border-right: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            box-sizing: border-box;
+        }
+        .myIcon{
+            background: #259feb;
+            float:left;
+            border-radius: 100%; 
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        .myIcon img{
+            width: 20px;
+            height: 20px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form class="layui-form " action="">
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">短输入框</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 60px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">日期选择</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="date" id="LAY-component-form-group-date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 60px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">开关-关</label>
+                <div class="layui-input-inline addBorder">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 170px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">单行选择框</label>
+                <div class="layui-input-inline">
+                    <select name="quiz1">
+                        <option value="">请选择省</option>
+                        <option value="浙江">浙江省</option>
+                        <option value="你的工号">江西省</option>
+                        <option value="你最喜欢的老师">福建省</option>
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 60px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">短输入框</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 60px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">短输入框</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 60px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-pane">
+                <span class="myIcon">
+                    <img src="../../public/img/大饼图.png" alt="">
+                </span>
+                <label class="layui-form-label" style="width: 130px;">开关-关</label>
+                <div class="layui-input-inline addBorder">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+                <div class="layui-form-mid layui-word-aux" style="margin-left: 170px;">
+                    <button class="layui-btn">默认按钮</button>
+                </div>
+            </div>
+        </div>
+    </form>
+   
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+         layui.config({
+            base: '../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['laydate']);
+        laydate = layui.laydate;
+        laydate.render({
+            elem: '#LAY-component-form-group-date'
+        });
+    
+    </script>
+</body>
+</html>

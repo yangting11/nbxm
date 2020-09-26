@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="../../echarts.min1.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index.css" rel="stylesheet"></link>
+    <title>Document</title>
+</head>
+<body>
+    <div id="mapid"></div>
+    <div class="rightBox" id="rightBox">
+        <div class="rightBoxAll">
+            <div class="toogleBox" onclick="clickToogle()">
+                <img id="toogleImg" src="../../public/img/left.png" alt="向右">
+            </div>
+            <div class="rightBoxHeader">
+                <div id="showTime"></div>
+                <div class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 32px;font-size: 16px;">范围</label>
+                            <div class="layui-input-inline" style="width: 230px;">
+                                <input type="text" class="layui-input" id="test-laydate-start" placeholder="yyyy-MM-dd">
+                            </div>
+                            <div class="layui-input-inline" style="width: 230px;">
+                                <input type="text" class="layui-input" id="test-laydate-end" placeholder="yyyy-MM-dd">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button class="layui-btn layui-btn-normal">百搭按钮</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightBoxBody">
+                <div class="rightBoxBodyTop">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline" style="width:250px">
+                                <div class="layui-input-inline" style="width:250px">
+                                    <input type="radio" name="sex1" value="男男" title="男男">
+                                    <input type="radio" name="sex1" value="女女" title="女女">
+                                    <input type="radio" name="sex1" value="保密" title="保密">
+                                </div>
+                            </div>
+                            <div class="layui-inline" style="width:250px">
+                                <div class="layui-input-inline" style="width:250px">
+                                    <input type="radio" name="sex2" value="男男" title="男男">
+                                    <input type="radio" name="sex2" value="女女" title="女女">
+                                    <input type="radio" name="sex2" value="保密" title="保密">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <input type="checkbox" name="" title="写作">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxBodyContent">
+                    <div class="tableDetail">
+                        <div class="layui-btn-container">
+                            <div class="layui-btn-group dataAction">
+                                <button class="layui-btn layui-btn-primary">
+                                    <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #333;"></i>
+                                </button>
+                                <button class="layui-btn layui-btn-primary">
+                                    <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="showTable">
+                            <table class="layui-hide" id="test-table-simple"></table>
+                        </div>
+                    </div>
+                    <div id="leftechart"></div>
+                    <div id="rightechart"></div>
+                </div>
+                <div class="desc">
+                    备注：根据layui框架根据layui框架根据layui框架根据layui框架
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        var ifOpen=false;
+        document.getElementById("showTime").innerHTML=transTime(new Date());
+        setInterval(function(){
+            document.getElementById("showTime").innerHTML=transTime(new Date());
+        },1000);
+        var layer = layui.layer;
+        var table = layui.table;
+        var map = map;
+        table.render({
+            elem: '#test-table-simple',
+            data: [
+                { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
+                { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
+                { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+            ],
+            cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            limit: 10,
+            height: 'full-360',
+            cols: [[
+                { field: 'id', title: 'ID', sort: true }
+                , { field: 'username', title: '用户名' }
+                , { field: 'sex', title: '性别' }
+            ]]
+        })
+        initMap();
+        initLeftEchart();
+        initRightEchart();
+        function getArrayValue(array, key) {
+            var key = key || "value";
+            var res = [];
+            if (array) {
+                array.forEach(function(t) {
+                    res.push(t[key]);
+                });
+            }
+            return res;
+        }
+
+        function array2obj(array, key) {
+            var resObj = {};
+            for (var i = 0; i < array.length; i++) {
+                resObj[array[i][key]] = array[i];
+            }
+            return resObj;
+        }
+
+        function getData(data) {
+            var res = {
+                series: [{
+                        name: "大环",
+                        type: 'gauge',
+                        splitNumber: 15,
+                        radius: '82%',
+                        center: ['50%', '55%'],
+                        startAngle: 90,
+                        endAngle: -269.9999,
+                        axisLine: {
+                            show: false,
+                            lineStyle: {
+                                color: [
+                                    [1, '#1f59a7']
+                                ]
+                            }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        splitLine: {
+                            show: true,
+                            length: 32,
+                            lineStyle: {
+                                color: 'auto',
+                                width: 3.5
+                            }
+                        },
+                        axisLabel: {
+                            show: false
+                        },
+                        detail: {
+                            show: false
+                        }
+                    },
+                    {
+                        name: '小环',
+                        type: 'gauge',
+                        splitNumber: 15,
+                        radius: '78%',
+                        center: ['50%', '55%'],
+                        startAngle: 90,
+                        endAngle: -269.9999,
+                        axisLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: true,
+                            lineStyle: {
+                                color: '#1f59a7',
+                                width: 3
+                            },
+                            length: 20,
+                            splitNumber: 5
+                        },
+                        splitLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: false
+                        },
+                        detail: {
+                            show: false
+                        }
+                    },
+                ],
+                yAxis: []
+            };
+            for (let i = 0; i < data.length; i++) {
+                res.series.push({
+                    name: '学历',
+                    type: 'pie',
+                    clockWise: true,
+                    z: 2,
+                    hoverAnimation: false,
+                    radius: [73 - i * 15 + '%', 68 - i * 15 + '%'],
+                    center: ["50%", "55%"],
+                    label: {
+                        show: true,
+                        formatter: '{d}%',
+                        color: 'RGB(246,175,101)',
+                        fontSize: 18,
+                        position: 'inside'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [{
+                        value: data[i].value,
+                        name: data[i].name
+                    }, {
+                        value: sumValue - data[i].value,
+                        name: '',
+                        itemStyle: {
+                            color: "rgba(0,0,0,0)",
+                            borderWidth: 0
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        label: {
+                            show: false
+                        },
+                        hoverAnimation: false
+                    }]
+                });
+                res.series.push({
+                    name: '背景线',
+                    type: 'pie',
+                    silent: true,
+                    z: 1,
+                    clockWise: true,
+                    hoverAnimation: false,
+                    radius: [71 - i * 15 + '%', 69 - i * 15 + '%'],
+                    center: ["50%", "55%"],
+                    label: {
+                        show: false
+                    },
+                    itemStyle: {
+                        label: {
+                            show: false,
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        borderWidth: 5,
+                    },
+                    data: [{
+                        value: 100,
+                        itemStyle: {
+                            color: "RGB(12,64,128)",
+                            borderWidth: 0
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        hoverAnimation: false
+                    }]
+                });
+                res.yAxis.push(data[i].name);
+            }
+            return res;
+        }
+        function initLeftEchart(){
+            var myChart = echarts.init(document.getElementById("leftechart"));
+            // 指定图表的配置项和数据
+            data = [{
+                name: "本科",
+                value: 754
+            },
+            {
+                name: "硕士",
+                value: 611
+            },
+            {
+                name: "大专",
+                value: 400
+            },
+            {
+                name: "博士",
+                value: 200
+            }
+        ];
+        arrName = getArrayValue(data, "name");
+        arrValue = getArrayValue(data, "value");
+        sumValue = 1000;
+        objData = array2obj(data, "name");
+        optionData = getData(data)
+        var option = {
+            backgroundColor: 'RGB(8,20,67)',
+            color: [{
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 1,
+                y2: 1,
+                colorStops: [{
+                    offset: 0,
+                    color: 'rgba(10,31,95,1)'
+                }, {
+                    offset: 1,
+                    color: 'rgba(1,232,254,1)'
+                }],
+                global: false
+            }],
+            grid: {
+                top: '16%',
+                bottom: '54%',
+                left: "50%",
+                containLabel: false
+            },
+            yAxis: [{
+                type: 'category',
+                inverse: true,
+                z: 3,
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    interval: 0,
+                    inside: false,
+                    textStyle: {
+                        color: "RGB(78,184,252)",
+                        fontSize: 18,
+                    },
+                    show: true
+                },
+                data: optionData.yAxis
+            }],
+            xAxis: [{
+                show: false
+            }],
+            series: optionData.series
+        };
+            myChart.setOption(option);
+        }
+        function initRightEchart(){
+            var myChart = echarts.init(document.getElementById("rightechart"));
+            // 指定图表的配置项和数据
+            data = [{
+                name: "本科",
+                value: 754
+            },
+            {
+                name: "硕士",
+                value: 611
+            },
+            {
+                name: "大专",
+                value: 400
+            },
+            {
+                name: "博士",
+                value: 200
+            }
+        ];
+        arrName = getArrayValue(data, "name");
+        arrValue = getArrayValue(data, "value");
+        sumValue = 1000;
+        objData = array2obj(data, "name");
+        optionData = getData(data)
+        var option = {
+            backgroundColor: 'RGB(8,20,67)',
+            color: [{
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 1,
+                y2: 1,
+                colorStops: [{
+                    offset: 0,
+                    color: 'rgba(10,31,95,1)'
+                }, {
+                    offset: 1,
+                    color: 'rgba(1,232,254,1)'
+                }],
+                global: false
+            }],
+            grid: {
+                top: '16%',
+                bottom: '54%',
+                left: "50%",
+                containLabel: false
+            },
+            yAxis: [{
+                type: 'category',
+                inverse: true,
+                z: 3,
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    interval: 0,
+                    inside: false,
+                    textStyle: {
+                        color: "RGB(78,184,252)",
+                        fontSize: 18,
+                    },
+                    show: true
+                },
+                data: optionData.yAxis
+            }],
+            xAxis: [{
+                show: false
+            }],
+            series: optionData.series
+        };
+
+            myChart.setOption(option);
+        }
+        function initMap(){
+            map = L.map("mapid", {
+                center: [37.005646, 114.52044],
+                zoom: 11,
+                fullscreenControl: false,
+                zoomControl: false,
+                attributionControl: false
+            });
+            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
+                subdomains: "1234"
+            });
+            map.addLayer(baseLayer);
+            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+            var marker2 = L.marker([37, 114.25]).addTo(map)
+            marker2.on('click',e=>{
+                if($("#popupIframe").length >0){
+                    return
+                }
+                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup">
+                    <div class="popupHeader">
+                        弹出层3 <i id="closePopup" class="rightClose layui-icon layui-icon-close" style="font-size: 20px; color: #333;"></i>
+                    </div>
+                    <iframe id="popupIframe" style="border:none;outline:none;width:100%;height:580px" src="../../component/index5/popupmap.html"></iframe>
+                    <div class="popupTable" id="popupTable"></div>
+                </div>`);
+                map.openPopup(popup)  
+                $("#closePopup").on('click',function(){
+                    map.closePopup();
+                })
+                map.flyTo([e.latlng.lat,e.latlng.lng],13)
+            })     
+        }
+        function transTime(time){
+            let year = time.getFullYear();
+            let month = formatTime(time.getMonth()+1);
+            let day = formatTime(time.getDate());
+            let hour = formatTime(time.getHours());
+            let min = formatTime(time.getMinutes());
+            let sec = formatTime(time.getSeconds());
+            return year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec
+        }
+        function formatTime(time){
+            return time<10?'0'+time:time
+        }
+        function clickToogle(){
+            if(ifOpen){
+                $("#toogleImg").attr('src','../../public/img/left.png')
+                $("#rightBox").css('right','-700px')
+            }else{
+                $("#toogleImg").attr('src','../../public/img/right.png');
+                $("#rightBox").css('right','0px')
+
+            }
+            ifOpen=!ifOpen;
+        }
+    </script>
+</body>
+</html>

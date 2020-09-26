@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
-    <script src="../echarts.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <script src="../../echarts.min.js"></script>
     <title>Document</title>
     <style>
         .tableDetail{
@@ -70,17 +70,32 @@
             height: 480px;
             display: none;
         }
+        /* .detailType:hover{
+            background-color: #009688;
+            
+        }
+        .detailType:hover i{
+            color: #fff!important;
+        } */
+        .detailType:hover,.dataAction>button:hover{
+            background-color: #1E9FFF;
+            /* border: none; */
+            
+        }
+        .detailType:hover i,.dataAction>button:hover i{
+            color: #fff!important;
+        }
     </style>
 </head>
 <body>
     <div class="tableDetail">
         <div class="layui-btn-container">
             <div class="layui-btn-group viewAction">
-              <button class="layui-btn detailType" type="1">
-                <i class="layui-icon layui-icon-picture" style="font-size: 24px; color: #fff;"></i>  
+              <button class="layui-btn detailType layui-btn-primary" style="padding: 0px 14px!important;" type="0">
+                <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>  
               </button>
-              <button class="layui-btn detailType layui-btn-primary" type="2">
-                <i class="layui-icon layui-icon-table" style="font-size: 24px; color: #333;"></i>  
+              <button class="layui-btn detailType layui-btn-primary" type="1">
+                <i class="layui-icon layui-icon-picture" style="font-size: 24px;"></i>  
               </button>
               
             </div>
@@ -91,7 +106,6 @@
                 <button class="layui-btn layui-btn-primary">
                   <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>  
                 </button>
-                layui-icon-print
               </div>
         </div>
         <div class="showTable">
@@ -107,15 +121,16 @@
             </div>
         </div>
     </div>
-    <script src="../layuiadmin/layui/layui.all.js"></script>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
-        layui.config({
-            base: './layuiadmin/' //静态资源所在路径
-        }).extend({
-            index: 'lib/index' //主入口模块
-        }).use(['index', 'sample']);
+        // layui.config({
+        //     base: './layuiadmin/' //静态资源所在路径
+        // }).extend({
+        //     index: 'lib/index' //主入口模块
+        // }).use(['index', 'sample']);
         var table = layui.table;
-  
+    $(".detailType").eq(0).css('background','#1E9FFF');
+    $(".detailType").eq(0).find('i').css('color','#fff');
     table.render({
       elem: '#test-table-simple',
       data:[
@@ -138,19 +153,21 @@
       ]]
     });
     $(".detailType").on('click',function(){
-        if($(this).hasClass('layui-btn-primary')){
-            $(".detailType").addClass('layui-btn-primary');
-            $(".detailType i").css('color','#333');
-            $(this).removeClass('layui-btn-primary');
-            $(this).find('i').css('color','#fff');
-            if($(this).attr('type')==2){
-                $(".showTable").css('display','none');
-                $("#myEchart").css('display','block');
-                drawEchart()
-            }else{
-                $("#myEchart").css('display','none');
-                $(".showTable").css('display','block');
-            }
+        if($(this).attr('type')==0){
+            $(".detailType").eq(0).css('background','#1E9FFF');
+            $(".detailType").eq(0).find('i').css('color','#fff');
+            $(".detailType").eq(1).css('background','');
+            $(".detailType").eq(1).find('i').css('color','');
+            $("#myEchart").css('display','none');
+            $(".showTable").css('display','block');
+        }else{
+            $(".detailType").eq(1).css('background','#1E9FFF');
+            $(".detailType").eq(1).find('i').css('color','#fff');
+            $(".detailType").eq(0).css('background','');
+            $(".detailType").eq(0).find('i').css('color','');
+            $(".showTable").css('display','none');
+            $("#myEchart").css('display','block');
+            drawEchart()
         }
     })
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <script src="../../echarts.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
-    <link href="./index.css" rel="stylesheet"></link>
+    <link href="./index.css" rel="stylesheet">
+    </link>
     <title>Document</title>
 </head>
+
 <body>
     <div id="mapid"></div>
     <div class="rightBox" id="rightBox">
@@ -22,7 +25,17 @@
                     <div id="showTime"></div>
                     <form class="layui-form" action="">
                         <div class="layui-form-item">
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
+                                <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">北京</option>
+                                    <option value="1">上海</option>
+                                    <option value="2">广州</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">杭州</option>
+                                </select>
+                            </div>
+                            <div class="layui-input-inline">
                                 <select class="rightBoxHeaderSelect" name="city" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">北京</option>
@@ -38,14 +51,6 @@
                 <div class="rightBoxHeaderRight">
                     <li class="settingEl" onclick="showSetting(1)">
                         <i class="layui-icon layui-icon-set-fill"></i>
-                        <p>设置</p>
-                    </li>
-                    <li class="settingEl">
-                        <i class="layui-icon layui-icon-set-fill"></i>
-                        <p>记录</p>
-                    </li>
-                    <li class="settingEl">
-                        <i class="layui-icon layui-icon-set-fill"></i>
                         <p>对话</p>
                     </li>
                     <li class="settingEl" onclick="showSetting(2)">
@@ -56,41 +61,44 @@
             </div>
             <div class="rightBoxBody">
                 <div class="rightBoxBodyTop">
-                    <div class="layui-form" wid100>
+                    <div class="layui-form">
                         <div class="layui-form-item">
                             <div class="layui-inline">
                                 <label class="layui-form-label">范围</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="test-laydate-start" placeholder="yyyy-MM-dd">
+                                    <input type="text" class="layui-input" id="test-laydate-start"
+                                        placeholder="yyyy-MM-dd">
                                 </div>
                                 <div class="layui-form-mid"> —— </div>
                                 <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="test-laydate-end" placeholder="yyyy-MM-dd">
+                                    <input type="text" class="layui-input" id="test-laydate-end"
+                                        placeholder="yyyy-MM-dd">
                                 </div>
                             </div>
                             <div class="layui-inline">
-                                <button class="layui-btn layui-btn-warm">暖色按钮</button>
+                                <button class="layui-btn">默认按钮</button>
+                                <button class="layui-btn layui-btn-normal">百搭按钮</button>
                             </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="rightBoxBodyContent">
                     <ul>
                         <li>
-                            <div>#FFB800</div>
-                            <div>暖色系</div>
+                            <div>#009688</div>
+                            <div>及频率重现</div>
                         </li>
                         <li>
-                            <div>#FF5722</div>
-                            <div>注意的颜色</div>
+                            <div>#5FB878</div>
+                            <div>一般用于选中状态</div>
                         </li>
                         <li>
-                            <div>#01AAED</div>
-                            <div>如链接文本</div>
+                            <div>#393D49</div>
+                            <div>通常用于导航</div>
                         </li>
                         <li>
-                            <div>#2F4056</div>
-                            <div>遍采用的颜色</div>
+                            <div>#1E9FFF</div>
+                            <div>鲜艳色系的页面</div>
                         </li>
                         <li>
                             <div>#009688</div>
@@ -114,22 +122,23 @@
                     <div class="tableDetail">
                         <div class="layui-btn-container">
                             <div class="layui-btn-group viewAction">
-                              <button class="layui-btn detailType layui-btn-primary" type="0">
-                                <i class="layui-icon layui-icon-picture" style="font-size: 24px;"></i>  
-                              </button>
-                              <button class="layui-btn detailType layui-btn-primary" type="1" style="padding: 0 12px!important;">
-                                <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>  
-                              </button>
-                              
+                                <button class="layui-btn detailType layui-btn-primary" type="0">
+                                    <i class="layui-icon layui-icon-picture" style="font-size: 24px;"></i>
+                                </button>
+                                <button class="layui-btn detailType layui-btn-primary" type="1"
+                                    style="padding: 0px 12px!important;">
+                                    <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>
+                                </button>
+
                             </div>
                             <div class="layui-btn-group dataAction">
                                 <button class="layui-btn layui-btn-primary">
-                                  <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #333;"></i>  
+                                    <i class="layui-icon layui-icon-export" style="font-size: 24px; color: #333;"></i>
                                 </button>
                                 <button class="layui-btn layui-btn-primary">
-                                  <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>  
+                                    <i class="layui-icon layui-icon-print" style="font-size: 24px; color: #333;"></i>
                                 </button>
-                              </div>
+                            </div>
                         </div>
                         <div class="showTable">
                             <table class="layui-hide" id="test-table-simple"></table>
@@ -150,12 +159,12 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
-        $(".detailType").eq(0).css('background','#1E9FFF');
-        $(".detailType").eq(0).find('i').css('color','#fff');
-        document.getElementById("showTime").innerHTML=transTime(new Date());
-        setInterval(function(){
-            document.getElementById("showTime").innerHTML=transTime(new Date());
-        },1000);
+        $(".detailType").eq(0).css('background', '#1E9FFF');
+        $(".detailType").eq(0).find('i').css('color', '#fff');
+        document.getElementById("showTime").innerHTML = transTime(new Date());
+        setInterval(function () {
+            document.getElementById("showTime").innerHTML = transTime(new Date());
+        }, 1000);
         laydate = layui.laydate;
         laydate.render({
             elem: '#test-laydate-start'
@@ -163,58 +172,59 @@
         laydate.render({
             elem: '#test-laydate-end'
         });
-        $(".detailType").on('click',function(){
-            if($(this).attr('type')==0){
-                $(".detailType").eq(0).css('background','#1E9FFF');
-                $(".detailType").eq(0).find('i').css('color','#fff');
-                $(".detailType").eq(1).css('background','');
-                $(".detailType").eq(1).find('i').css('color','');
-                $("#myEchart").css('display','block');
-                $(".showTable").css('display','none');
+
+        $(".detailType").on('click', function () {
+            if ($(this).attr('type') == 0) {
+                $(".detailType").eq(0).css('background', '#1E9FFF');
+                $(".detailType").eq(0).find('i').css('color', '#fff');
+                $(".detailType").eq(1).css('background', '');
+                $(".detailType").eq(1).find('i').css('color', '');
+                $("#myEchart").css('display', 'block');
+                $(".showTable").css('display', 'none');
                 drawEchart()
-            }else{
-                $(".detailType").eq(1).css('background','#1E9FFF');
-                $(".detailType").eq(1).find('i').css('color','#fff');
-                $(".detailType").eq(0).css('background','');
-                $(".detailType").eq(0).find('i').css('color','');
-                $(".showTable").css('display','block');
-                $("#myEchart").css('display','none');
+            } else {
+                $(".detailType").eq(1).css('background', '#1E9FFF');
+                $(".detailType").eq(1).find('i').css('color', '#fff');
+                $(".detailType").eq(0).css('background', '');
+                $(".detailType").eq(0).find('i').css('color', '');
+                $(".showTable").css('display', 'block');
+                $("#myEchart").css('display', 'none');
                 table.render({
                     elem: '#test-table-simple',
-                    data:[
-                        {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
-                        {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
-                        {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                    data: [
+                        { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
+                        { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
+                        { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
                     ],
                     cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                     cols: [[
-                        {field:'id', title: 'ID', sort: true}
-                        ,{field:'username', title: '用户名'}
-                        ,{field:'sex', title: '性别'}
-                        ,{field:'city', title: '城市'}
-                        ,{field:'sign', title: '签名'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                        ,{field:'experience', title: '积分', sort: true}
-                        ,{field:'score', title: '评分', sort: true}
-                        ,{field:'classify', title: '职业'}
-                        ,{field:'wealth', title: '财富', sort: true}
+                        { field: 'id', title: 'ID', sort: true }
+                        , { field: 'username', title: '用户名' }
+                        , { field: 'sex', title: '性别' }
+                        , { field: 'city', title: '城市' }
+                        , { field: 'sign', title: '签名' } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                        , { field: 'experience', title: '积分', sort: true }
+                        , { field: 'score', title: '评分', sort: true }
+                        , { field: 'classify', title: '职业' }
+                        , { field: 'wealth', title: '财富', sort: true }
                     ]]
                 })
-                
+
             }
         })
-        var ifOpen=false;
+        var ifOpen = false;
         var layer = layui.layer;
         var table = layui.table;
         var map = map;
         initMap();
         dataEchart();
-        function initMap(){
+        function initMap() {
             map = L.map("mapid", {
                 center: [37.005646, 114.52044],
                 zoom: 11,
@@ -222,16 +232,16 @@
                 zoomControl: false,
                 attributionControl: false
             });
-            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
+            let baseLayer = L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
                 subdomains: "1234"
             });
             map.addLayer(baseLayer);
-            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div id='charttool'></div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,120],className:'leaflet-label'}).openTooltip();
-            marker.on('click',e=>{
-                if($("#popupTable").length>0){
+            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div id='charttool'></div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>", { permanent: true, opacity: 1, direction: 'top', offset: [0, 120], className: 'leaflet-label' }).openTooltip();
+            marker.on('click', e => {
+                if ($("#popupTable").length > 0) {
                     return
                 }
-                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup">
+                var popup = L.popup().setLatLng([e.latlng.lat, e.latlng.lng]).setContent(`<div class="popup">
                     <div class="popupHeader">
                         弹出层3 <i id="closePopup" class="rightClose layui-icon layui-icon-close" style="font-size: 20px; color: #333;"></i>
                     </div>
@@ -240,39 +250,39 @@
                 map.openPopup(popup);
                 table.render({
                     elem: '#popupTable',
-                    data:[
-                        {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
-                        {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
-                        {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
-                        {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                    data: [
+                        { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
+                        { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
+                        { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
                     ],
                     cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
                     cols: [[
-                        {field:'id', width:50, title: 'ID', sort: true}
-                        ,{field:'username', width:80, title: '用户名'}
-                        ,{field:'sex', width:50, title: '性别', sort: true}
-                        ,{field:'city', width:80, title: '城市'}
-                        ,{field:'sign', title: '签名', width: 120, minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                        ,{field:'experience', title: '积分',width: 80, sort: true}
-                        ,{field:'score', title: '评分', width: 50,sort: true}
-                        ,{field:'classify', title: '职业',width: 100,}
-                        ,{field:'wealth', width:120, title: '财富', sort: true}
+                        { field: 'id', width: 50, title: 'ID', sort: true }
+                        , { field: 'username', width: 80, title: '用户名' }
+                        , { field: 'sex', width: 50, title: '性别', sort: true }
+                        , { field: 'city', width: 80, title: '城市' }
+                        , { field: 'sign', title: '签名', width: 120, minWidth: 100 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                        , { field: 'experience', title: '积分', width: 80, sort: true }
+                        , { field: 'score', title: '评分', width: 50, sort: true }
+                        , { field: 'classify', title: '职业', width: 100, }
+                        , { field: 'wealth', width: 120, title: '财富', sort: true }
                     ]]
                 });
-                $("#closePopup").on('click',function(){
+                $("#closePopup").on('click', function () {
                     map.closePopup();
                 })
-                map.flyTo([e.latlng.lat,e.latlng.lng],13)
-            }) 
-            toolEchart()    
+                map.flyTo([e.latlng.lat, e.latlng.lng], 13)
+            })
+            toolEchart()
         }
-        function toolEchart(){
+        function toolEchart() {
             var myChart = echarts.init(document.getElementById("charttool"));
             var data = {
                 value: 76,
@@ -303,7 +313,7 @@
                     name: data.name,
                     type: 'pie',
                     radius: ['135%', '150%'],
-                    center:['50%','90%'],
+                    center: ['50%', '90%'],
                     startAngle: 180,
                     endAngle: 0,
 
@@ -340,7 +350,7 @@
                     type: 'pie',
                     cursor: 'default',
                     radius: ['155%', '155%'],
-                    center:['50%','90%'],
+                    center: ['50%', '90%'],
                     startAngle: 180,
                     hoverAnimation: false,
                     legendHoverLink: false,
@@ -367,129 +377,129 @@
             };
             myChart.setOption(option);
         }
-        function dataEchart(){
+        function dataEchart() {
             var myChart = echarts.init(document.getElementById("myEchart"));
             option = {
                 title: {
                     text: '未来一周气温变化',
-                    textStyle:{
-                        fontWeight:500,
-                        fontSize:24,
-                        color:'#666'
+                    textStyle: {
+                        fontWeight: 500,
+                        fontSize: 24,
+                        color: '#666'
                     },
                     subtext: '纯属虚构',
-                    subtextStyle:{
-                        fontSize:16,
+                    subtextStyle: {
+                        fontSize: 16,
                     },
                 },
                 grid: {
                     left: 80,
-                    right:50,
-                    top:80,
-                    bottom:30
+                    right: 50,
+                    top: 80,
+                    bottom: 30
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
                 legend: {
                     data: ['最高气温', '最低气温'],
-                    textStyle:{
-                        fontSize:16
+                    textStyle: {
+                        fontSize: 16
                     },
-                    itemWidth:30
+                    itemWidth: 30
                 },
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
                     data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-                    axisLine:{
-                        lineStyle:{
-                            width:3,
-                            color:'#009688',
+                    axisLine: {
+                        lineStyle: {
+                            width: 3,
+                            color: '#009688',
                         }
                     },
-                    axisTick:{
-                        show:false
+                    axisTick: {
+                        show: false
                     },
-                    splitLine:{
-                        show:true
+                    splitLine: {
+                        show: true
                     },
-                    axisLabel:{
-                        color:'#555',
-                        fontSize:14
+                    axisLabel: {
+                        color: '#555',
+                        fontSize: 14
                     }
-                    
+
                 },
                 yAxis: {
                     type: 'value',
                     axisLabel: {
                         formatter: '{value} °C'
                     },
-                    interval:5,
-                    min:-5,
-                    max:15,
-                    axisLine:{
-                        lineStyle:{
-                            width:3,
-                            color:'#009688',
+                    interval: 5,
+                    min: -5,
+                    max: 15,
+                    axisLine: {
+                        lineStyle: {
+                            width: 3,
+                            color: '#009688',
                         }
                     },
-                    axisTick:{
-                        show:false
+                    axisTick: {
+                        show: false
                     },
-                    splitLine:{
-                        show:true
+                    splitLine: {
+                        show: true
                     },
-                    axisLabel:{
-                        fontSize:14,
-                        color:'#555'
+                    axisLabel: {
+                        fontSize: 14,
+                        color: '#555'
                     },
-                    splitArea:{
-                        show:true,
+                    splitArea: {
+                        show: true,
                     }
                 },
-                color:['#009688','#1E9FFF'],
+                color: ['#009688', '#1E9FFF'],
                 series: [
                     {
                         name: '最高气温',
                         type: 'line',
                         data: [11, 11, 15, 13, 12, 13, 10],
-                        lineStyle:{
-                            width:3
+                        lineStyle: {
+                            width: 3
                         },
                         markPoint: {
                             data: [
-                                {type: 'max', name: '最大值'},
-                                {type: 'min', name: '最小值'}
+                                { type: 'max', name: '最大值' },
+                                { type: 'min', name: '最小值' }
                             ]
                         },
                         markLine: {
-                            lineStyle:{
-                                width:3
+                            lineStyle: {
+                                width: 3
                             },
                             data: [
-                                {type: 'average', name: '平均值'}
+                                { type: 'average', name: '平均值' }
                             ]
                         }
                     },
                     {
                         name: '最低气温',
                         type: 'line',
-                        lineStyle:{
-                            width:3
+                        lineStyle: {
+                            width: 3
                         },
                         data: [1, -2, 2, 5, 3, 2, 0],
                         markPoint: {
                             data: [
-                                {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+                                { name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }
                             ]
                         },
                         markLine: {
-                            lineStyle:{
-                                width:3
+                            lineStyle: {
+                                width: 3
                             },
                             data: [
-                                {type: 'average', name: '平均值'},
+                                { type: 'average', name: '平均值' },
                                 // [{
                                 //     symbol: 'none',
                                 //     x: '90%',
@@ -510,53 +520,54 @@
             };
             myChart.setOption(option);
         }
-        function transTime(time){
+        function transTime(time) {
             let year = time.getFullYear();
-            let month = formatTime(time.getMonth()+1);
+            let month = formatTime(time.getMonth() + 1);
             let day = formatTime(time.getDate());
             let hour = formatTime(time.getHours());
             let min = formatTime(time.getMinutes());
             let sec = formatTime(time.getSeconds());
-            return year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec
+            return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec
         }
-        function formatTime(time){
-            return time<10?'0'+time:time
+        function formatTime(time) {
+            return time < 10 ? '0' + time : time
         }
-        function clickToogle(){
-            if(ifOpen){
-                $("#toogleImg").attr('src','../../public/img/left.png')
-                $("#rightBox").css('right','-700px')
-            }else{
-                $("#toogleImg").attr('src','../../public/img/right.png');
-                $("#rightBox").css('right','0px')
+        function clickToogle() {
+            if (ifOpen) {
+                $("#toogleImg").attr('src', '../../public/img/left.png')
+                $("#rightBox").css('right', '-700px')
+            } else {
+                $("#toogleImg").attr('src', '../../public/img/right.png');
+                $("#rightBox").css('right', '0px')
 
             }
-            ifOpen=!ifOpen;
+            ifOpen = !ifOpen;
         }
-        function showSetting(type){
-            if(type=='1'){
+        function showSetting(type) {
+            if (type == '1') {
                 layer.open({
-                    title:'弹出框1',
+                    title: '弹出框1',
                     type: 1,
                     //,skin: 'layui-layer-rim'
                     shadeClose: true,
-                    area:['640px', '540px'],
-                    content: '<iframe style="border:none;outline:none;width:100%;height:410px" src="../../component/index2/popup1.html"></iframe><div class="action" style="width:620px;height:50px;text-align:right;padding-top:30px"><button class="layui-btn layui-btn-warm" onclick="closeLayer()">关闭</button></div>'
+                    area: ['640px', '540px'],
+                    content: '<iframe style="border:none;outline:none;width:100%;height:410px" src="../../component/index4/popup1.html"></iframe><div class="action" style="width:620px;height:50px;text-align:right;padding-top:30px"><button class="layui-btn layui-btn-warm" onclick="closeLayer()">关闭</button></div>'
                 });
-            }else{
+            } else {
                 layer.open({
-                    title:false,
+                    title: false,
                     type: 1,
                     //,skin: 'layui-layer-rim'
                     shadeClose: true,
-                    area:['1040px', '600px'],
-                    content: '<iframe style="border:none;outline:none;width:100%;height:590px" src="../../component/index2/popup2.html"></iframe><div style="position:absolute;top:14px;right:10px;" onclick="closeLayer()"><i class="layui-icon layui-icon-close" style="font-size:20px"></i></div><button class="layui-btn layui-btn-warm" style="position: absolute;top: 550px;right: 20px;" onclick="closeLayer()">关闭</button>'
+                    area: ['1040px', '600px'],
+                    content: '<iframe style="border:none;outline:none;width:100%;height:590px" src="../../component/index4/popup2.html"></iframe><div style="position:absolute;top:14px;right:10px;" onclick="closeLayer()"><i class="layui-icon layui-icon-close" style="font-size:20px"></i></div><button class="layui-btn layui-btn-warm" style="position: absolute;top: 550px;right: 20px;" onclick="closeLayer()">关闭</button>'
                 });
             }
         }
-        function closeLayer(){
+        function closeLayer() {
             $('.layui-layer-shade').click();
         }
     </script>
 </body>
+
 </html>
