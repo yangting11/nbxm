@@ -5,7 +5,7 @@
     padding: 5px 10px;
     box-sizing: border-box;
     border-left: 4px solid rgba(0, 120, 173, 1);
-    background: #f3f3f3;
+    background: #e6e6e6;
 }
 .pageContentLeft{
     width: 100%;
@@ -45,7 +45,7 @@
 .tableDetail{
     padding: 10px;
     width: calc(100% - 20px);
-    height: 560px;
+    height: 460px;
     position: relative;
 }
 .viewAction{
@@ -69,12 +69,12 @@
   padding-top: 20px!important;
 }
 .showTable{
-    display:block;
+    display:none;
 }
 #myEchart{
     width: 100%;
-    height: 480px;
-    display: none;
+    height: 420px;
+    display: block;
 }
 .detailType:hover,.dataAction>button:hover{
     background-color: #1E9FFF;

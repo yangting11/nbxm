@@ -83,13 +83,13 @@
         }
 
         .showTable {
-            display: block;
+            display: none;
         }
 
         #myEchart {
             width: 680px;
             height: 420px;
-            display: none;
+            display: block;
         }
 
         .detailType:hover,
@@ -128,13 +128,12 @@
     <div class="tableDetail">
         <div class="layui-btn-container">
             <div class="layui-btn-group viewAction">
-                <button class="layui-btn detailType layui-btn-primary" style="padding: 0px 14px!important;" type="0">
-                    <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>
-                </button>
-                <button class="layui-btn detailType layui-btn-primary" type="1">
+                <button class="layui-btn detailType layui-btn-primary" type="0">
                     <i class="layui-icon layui-icon-picture" style="font-size: 24px;"></i>
                 </button>
-
+                <button class="layui-btn detailType layui-btn-primary" style="padding: 0px 14px!important;" type="1">
+                    <i class="layui-icon layui-icon-table" style="font-size: 32px;"></i>
+                </button>
             </div>
             <div class="layui-btn-group dataAction">
                 <button class="layui-btn layui-btn-primary">
@@ -160,50 +159,51 @@
         laydate.render({
             elem: '#test-laydate-end'
         });
+        drawEchart()
         $(".detailType").eq(0).css('background', '#1E9FFF');
         $(".detailType").eq(0).find('i').css('color', '#fff');
-        table.render({
-            elem: '#test-table-simple',
-            data: [
-                { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
-                { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
-                { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-                { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
-            ],
-            cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-            cols: [[
-                { field: 'id', title: 'ID', sort: true }
-                , { field: 'username', title: '用户名' }
-                , { field: 'sex', title: '性别' }
-                , { field: 'city', title: '城市' }
-                , { field: 'sign', title: '签名' } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-                , { field: 'experience', title: '积分', sort: true }
-                , { field: 'score', title: '评分', sort: true }
-                , { field: 'classify', title: '职业' }
-                , { field: 'wealth', title: '财富', sort: true }
-            ]]
-        })
         $(".detailType").on('click', function () {
             if ($(this).attr('type') == 0) {
                 $(".detailType").eq(0).css('background', '#1E9FFF');
                 $(".detailType").eq(0).find('i').css('color', '#fff');
                 $(".detailType").eq(1).css('background', '');
                 $(".detailType").eq(1).find('i').css('color', '');
-                $(".showTable").css('display', 'block');
-                $("#myEchart").css('display', 'none');
+                $("#myEchart").css('display', 'block');
+                $(".showTable").css('display', 'none');
+                drawEchart()
             } else {
                 $(".detailType").eq(1).css('background', '#1E9FFF');
                 $(".detailType").eq(1).find('i').css('color', '#fff');
                 $(".detailType").eq(0).css('background', '');
                 $(".detailType").eq(0).find('i').css('color', '');
-                $("#myEchart").css('display', 'block');
-                $(".showTable").css('display', 'none');
-                drawEchart()
+                $(".showTable").css('display', 'block');
+                $("#myEchart").css('display', 'none');
+                table.render({
+                    elem: '#test-table-simple',
+                    data: [
+                        { id: 1, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 10000000000 },
+                        { id: 2, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 20000000000 },
+                        { id: 3, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 30000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                        { id: 4, username: 'yt', sex: '女', city: 'zj', sign: '1212121', experience: 100, score: 9.9, classify: 'js', wealth: 40000000000 },
+                    ],
+                    cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                    cols: [[
+                        { field: 'id', title: 'ID', sort: true }
+                        , { field: 'username', title: '用户名' }
+                        , { field: 'sex', title: '性别' }
+                        , { field: 'city', title: '城市' }
+                        , { field: 'sign', title: '签名' } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                        , { field: 'experience', title: '积分', sort: true }
+                        , { field: 'score', title: '评分', sort: true }
+                        , { field: 'classify', title: '职业' }
+                        , { field: 'wealth', title: '财富', sort: true }
+                    ]]
+                })
             }
         })
         function drawEchart() {

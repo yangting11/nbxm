@@ -71,17 +71,23 @@
                                 </div>
                             </div>
                             <div class="layuiBodyContent">
-                                <div class="leftLayuiConent">
-                                    <div id="layuiContentTable"></div>
-                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-fluid">暖色按钮</button>
-                                </div>
-                                <div class="rightLayuiConent">
-                                    <div id="layuiContentEchart"></div>
+                                <div class="layui-row">
+                                    <div class="layui-col-lg3 layui-col-md4 layui-col-sm5 layui-col-xs12">
+                                        <div class="leftLayuiConent">
+                                            <div id="layuiContentTable"></div>
+                                            <button type="button" class="layui-btn layui-btn-warm layui-btn-fluid">暖色按钮</button>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-lg9 layui-col-md8 layui-col-sm7 layui-col-xs12">
+                                        <div class="rightLayuiConent">
+                                            <div id="layuiContentEchart"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item"  onclick="clickTab(2)">
+                    <div class="layui-tab-item">
                         <div class="layui-tab-item layui-show">
                             <div class="layui-form">
                                 <div class="layui-form-item">
@@ -132,18 +138,24 @@
                                     </div>
                                 </div>
                                 <div class="layuiBodyContent">
-                                    <div class="leftLayuiConent">
-                                        <div id="layuiContentTable2"></div>
-                                        <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
-                                    </div>
-                                    <div class="rightLayuiConent">
-                                        <div id="layuiContentEchart2"></div>
+                                    <div class="layui-row">
+                                        <div class="layui-col-lg3 layui-col-md4 layui-col-sm5 layui-col-xs12">
+                                            <div class="leftLayuiConent">
+                                                <div id="layuiContentTable2"></div>
+                                                <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-lg9 layui-col-md8 layui-col-sm7 layui-col-xs12">
+                                            <div class="rightLayuiConent">
+                                                <div id="layuiContentEchart2"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item" onclick="clickTab(3)">
+                    <div class="layui-tab-item">
                         <div class="layui-tab-item layui-show">
                             <div class="layui-form">
                                 <div class="layui-form-item">
@@ -194,19 +206,159 @@
                                     </div>
                                 </div>
                                 <div class="layuiBodyContent">
-                                    <div class="leftLayuiConent">
-                                        <div id="layuiContentTable3"></div>
-                                        <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
-                                    </div>
-                                    <div class="rightLayuiConent">
-                                        <div id="layuiContentEchart3"></div>
+                                    <div class="layui-row">
+                                        <div class="layui-col-lg3 layui-col-md4 layui-col-sm5 layui-col-xs12">
+                                            <div class="leftLayuiConent">
+                                                <div id="layuiContentTable3"></div>
+                                                <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-lg9 layui-col-md8 layui-col-sm7 layui-col-xs12">
+                                            <div class="rightLayuiConent">
+                                                <div id="layuiContentEchart3"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item">面板4</div>
-                    <div class="layui-tab-item">面板5</div>
+                    <div class="layui-tab-item">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <select class="rightBoxHeaderSelect" placeholder="请选择" name="city" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">北京</option>
+                                            <option value="1">上海</option>
+                                            <option value="2">广州</option>
+                                            <option value="3">深圳</option>
+                                            <option value="4">杭州</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">范围</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-start4"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid"> —— </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-end4"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <button class="layui-btn">暖色按钮</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layuiTableBody">
+                                <div class="layuiTableBodyTop">
+                                    <div class="layuiTableBodyTopLeft">
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                    </div>
+                                    <div class="layuiTableBodyTopRight">
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-export"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-print"></i>按钮
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layuiBodyContent">
+                                    <div class="layui-row">
+                                        <div class="layui-col-lg3 layui-col-md4 layui-col-sm5 layui-col-xs12">
+                                            <div class="leftLayuiConent">
+                                                <div id="layuiContentTable4"></div>
+                                                <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-lg9 layui-col-md8 layui-col-sm7 layui-col-xs12">
+                                            <div class="rightLayuiConent">
+                                                <div id="layuiContentEchart4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <select class="rightBoxHeaderSelect" placeholder="请选择" name="city" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">北京</option>
+                                            <option value="1">上海</option>
+                                            <option value="2">广州</option>
+                                            <option value="3">深圳</option>
+                                            <option value="4">杭州</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">范围</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-start5"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid"> —— </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-end5"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <button class="layui-btn">暖色按钮</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layuiTableBody">
+                                <div class="layuiTableBodyTop">
+                                    <div class="layuiTableBodyTopLeft">
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                    </div>
+                                    <div class="layuiTableBodyTopRight">
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-export"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-print"></i>按钮
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layuiBodyContent">
+                                    <div class="layui-row">
+                                        <div class="layui-col-lg3 layui-col-md4 layui-col-sm5 layui-col-xs12">
+                                            <div class="leftLayuiConent">
+                                                <div id="layuiContentTable5"></div>
+                                                <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-lg9 layui-col-md8 layui-col-sm7 layui-col-xs12">
+                                            <div class="rightLayuiConent">
+                                                <div id="layuiContentEchart5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -316,6 +468,72 @@
                         ]]
                     });
                     dataEchart("layuiContentEchart3");
+                    return
+                case 4:
+                    laydate.render({
+                        elem: '#test-laydate-start4'
+                    });
+                    laydate.render({
+                        elem: '#test-laydate-end4'
+                    });
+                    table.render({
+                        elem: '#layuiContentTable4',
+                        data:[
+                            {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                            {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                            {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                        ],
+                        cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        height: 'full-250',
+                        cols: [[
+                            {field:'id', title: 'ID', sort: true}
+                            ,{field:'username', title: '用户名'}
+                            ,{field:'sex', title: '性别', sort: true}
+                        ]]
+                    });
+                    dataEchart("layuiContentEchart4");
+                    return
+                case 5:
+                    laydate.render({
+                        elem: '#test-laydate-start5'
+                    });
+                    laydate.render({
+                        elem: '#test-laydate-end5'
+                    });
+                    table.render({
+                        elem: '#layuiContentTable5',
+                        data:[
+                            {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                            {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                            {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                        ],
+                        cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        height: 'full-250',
+                        cols: [[
+                            {field:'id', title: 'ID', sort: true}
+                            ,{field:'username', title: '用户名'}
+                            ,{field:'sex', title: '性别', sort: true}
+                        ]]
+                    });
+                    dataEchart("layuiContentEchart5");
                     return
             }
         }
