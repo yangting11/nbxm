@@ -226,7 +226,7 @@
                 subdomains: "1234"
             });
             map.addLayer(baseLayer);
-            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div id='charttool'></div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,120],className:'leaflet-label'}).openTooltip();
+            var marker = L.marker([37, 114.45],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div id='charttool'></div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,120],className:'leaflet-label'}).openTooltip();
             marker.on('click',e=>{
                 if($("#popupTable").length>0){
                     return

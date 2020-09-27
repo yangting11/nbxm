@@ -111,7 +111,7 @@
             ],
             cellMinWidth: 50, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
             limit: 10,
-            height: 'full-360',
+            height: 'full-496',
             cols: [[
                 { field: 'id', title: 'ID', sort: true }
                 , { field: 'username', title: '用户名' }
@@ -327,7 +327,7 @@
                 global: false
             }],
             grid: {
-                top: '16%',
+                top: '8%',
                 bottom: '54%',
                 left: "50%",
                 containLabel: false
@@ -403,7 +403,7 @@
                 global: false
             }],
             grid: {
-                top: '16%',
+                top: '8%',
                 bottom: '54%',
                 left: "50%",
                 containLabel: false
@@ -449,8 +449,8 @@
                 subdomains: "1234"
             });
             map.addLayer(baseLayer);
-            var marker = L.marker([37, 114.45]).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
-            var marker2 = L.marker([37, 114.25]).addTo(map)
+            var marker = L.marker([37, 114.45],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+            var marker2 = L.marker([37, 114.25],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map)
             marker2.on('click',e=>{
                 if($("#popupIframe").length >0){
                     return
