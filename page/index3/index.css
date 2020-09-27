@@ -1,0 +1,70 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.page3 .layui-tab{
+    margin: 0px;
+}
+.page3 .layui-card-body{
+    padding: 0px;
+}
+.page3 .layui-tab-title{
+    padding: 0px 30px;
+    height: 50px;
+    width: 900px;
+}
+.page3 .layui-tab-title li{
+    min-width: 140px;
+    height: 50px;
+    line-height: 50px;
+}
+.page3 .layui-tab-title .layui-this:after {
+    height: 51px;
+}
+.layuiTableBody{
+    border-top: 1px solid rgb(62, 184, 245);
+    width: 1500px;
+}
+.layuiTableBodyTop{
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+.layuiTableBodyTop .layui-btn+.layui-btn{
+    margin-left: 0px;
+}
+.layuiTableBodyTopLeft{
+    float: left;
+}
+.layuiTableBodyTopLeft .layui-btn{
+    font-size: 16px;
+}
+.layuiTableBodyTopRight{
+    float: right;
+}
+.layuiTableBodyTopRight .layui-btn-sm{
+    line-height: 28px;
+}
+.layuiBodyContent{
+    width: 100%;
+}
+.leftLayuiConent{
+    width: 600px;
+    float: left;
+}
+.leftLayuiConent .layui-table-body::-webkit-scrollbar{
+    width: 0px;
+}
+.rightLayuiConent{
+    width: 59%;
+    margin-left: 1%;
+    float: left;
+    border: 5px solid #f3f3f3;
+    box-sizing: border-box;
+}
+#layuiContentEchart,#layuiContentEchart2,#layuiContentEchart3{
+    width: 900px;
+    margin: 10px;
+    height: calc(100vh - 220px);
+}

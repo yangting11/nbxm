@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index.css" rel="stylesheet"></link>
+    <title>Document</title>
+</head>
+<body>
+    <div class="page3">
+        <div class="layui-card-body">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this"  onclick="clickTab(1)">网站设置</li>
+                    <li onclick="clickTab(2)">用户管理</li>
+                    <li onclick="clickTab(3)">权限分配</li>
+                    <li onclick="clickTab(4)">商品管理</li>
+                    <li onclick="clickTab(5)">订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show" onclick="clickTab(1)">
+                        <div class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <select class="rightBoxHeaderSelect" placeholder="请选择" name="city" lay-verify="required">
+                                        <option value=""></option>
+                                        <option value="0">北京</option>
+                                        <option value="1">上海</option>
+                                        <option value="2">广州</option>
+                                        <option value="3">深圳</option>
+                                        <option value="4">杭州</option>
+                                    </select>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">范围</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" id="test-laydate-start"
+                                            placeholder="yyyy-MM-dd">
+                                    </div>
+                                    <div class="layui-form-mid"> —— </div>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" id="test-laydate-end"
+                                            placeholder="yyyy-MM-dd">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn layui-btn-warm">暖色按钮</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layuiTableBody">
+                            <div class="layuiTableBodyTop">
+                                <div class="layuiTableBodyTopLeft">
+                                    <button class="layui-btn">
+                                        <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                    </button>
+                                    <button class="layui-btn">
+                                        <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                    </button>
+                                </div>
+                                <div class="layuiTableBodyTopRight">
+                                    <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                        <i class="layui-icon layui-icon-export"></i>按钮
+                                    </button>
+                                    <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                        <i class="layui-icon layui-icon-print"></i>按钮
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="layuiBodyContent">
+                                <div class="leftLayuiConent">
+                                    <div id="layuiContentTable"></div>
+                                    <button type="button" class="layui-btn layui-btn-warm layui-btn-fluid">暖色按钮</button>
+                                </div>
+                                <div class="rightLayuiConent">
+                                    <div id="layuiContentEchart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"  onclick="clickTab(2)">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <select class="rightBoxHeaderSelect" placeholder="请选择" name="city" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">北京</option>
+                                            <option value="1">上海</option>
+                                            <option value="2">广州</option>
+                                            <option value="3">深圳</option>
+                                            <option value="4">杭州</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">范围</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-start2"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid"> —— </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-end2"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <button class="layui-btn layui-btn-warm">暖色按钮</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layuiTableBody">
+                                <div class="layuiTableBodyTop">
+                                    <div class="layuiTableBodyTopLeft">
+                                        <button class="layui-btn">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                        <button class="layui-btn">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                    </div>
+                                    <div class="layuiTableBodyTopRight">
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-export"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-print"></i>按钮
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layuiBodyContent">
+                                    <div class="leftLayuiConent">
+                                        <div id="layuiContentTable2"></div>
+                                        <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                    </div>
+                                    <div class="rightLayuiConent">
+                                        <div id="layuiContentEchart2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item" onclick="clickTab(3)">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-form">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-inline">
+                                        <select class="rightBoxHeaderSelect" placeholder="请选择" name="city" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">北京</option>
+                                            <option value="1">上海</option>
+                                            <option value="2">广州</option>
+                                            <option value="3">深圳</option>
+                                            <option value="4">杭州</option>
+                                        </select>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">范围</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-start3"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                        <div class="layui-form-mid"> —— </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="test-laydate-end3"
+                                                placeholder="yyyy-MM-dd">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <button class="layui-btn layui-btn-warm">暖色按钮</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layuiTableBody">
+                                <div class="layuiTableBodyTop">
+                                    <div class="layuiTableBodyTopLeft">
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-normal">
+                                            <i class="layui-icon layui-icon-add-circle-fine"></i>按钮
+                                        </button>
+                                    </div>
+                                    <div class="layuiTableBodyTopRight">
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-export"></i>按钮
+                                        </button>
+                                        <button class="layui-btn layui-btn-primary layui-btn-sm">
+                                            <i class="layui-icon layui-icon-print"></i>按钮
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layuiBodyContent">
+                                    <div class="leftLayuiConent">
+                                        <div id="layuiContentTable3"></div>
+                                        <button type="button" style="float:right;" class="layui-btn layui-btn-warm">暖色按钮</button>
+                                    </div>
+                                    <div class="rightLayuiConent">
+                                        <div id="layuiContentEchart3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">面板4</div>
+                    <div class="layui-tab-item">面板5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        var table=layui.table;
+        laydate = layui.laydate;
+        clickTab(1);
+        function clickTab(index){
+            switch(index){
+                case 1:
+                    laydate.render({
+                        elem: '#test-laydate-start'
+                    });
+                    laydate.render({
+                        elem: '#test-laydate-end'
+                    });
+                    table.render({
+                        elem: '#layuiContentTable',
+                        data:[
+                            {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                            {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                            {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                        ],
+                        cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        height: 'full-250',
+                        cols: [[
+                            {field:'id', title: 'ID', sort: true}
+                            ,{field:'username', title: '用户名'}
+                            ,{field:'sex', title: '性别', sort: true}
+                        ]]
+                    });
+                    dataEchart("layuiContentEchart");
+                    return
+                case 2:
+                    laydate.render({
+                        elem: '#test-laydate-start2'
+                    });
+                    laydate.render({
+                        elem: '#test-laydate-end2'
+                    });
+                    table.render({
+                        elem: '#layuiContentTable2',
+                        data:[
+                            {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                            {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                            {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                        ],
+                        cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        height: 'full-250',
+                        cols: [[
+                            {field:'id', title: 'ID', sort: true}
+                            ,{field:'username', title: '用户名'}
+                            ,{field:'sex', title: '性别', sort: true}
+                        ]]
+                    });
+                    dataEchart("layuiContentEchart2");
+                    return
+                case 3:
+                    laydate.render({
+                        elem: '#test-laydate-start3'
+                    });
+                    laydate.render({
+                        elem: '#test-laydate-end3'
+                    });
+                    table.render({
+                        elem: '#layuiContentTable3',
+                        data:[
+                            {id:1,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:10000000000},
+                            {id:2,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:20000000000},
+                            {id:3,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:30000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                            {id:4,username:'yt',sex:'女',city:'zj',sign:'1212121',experience:100,score:9.9,classify:'js',wealth:40000000000},
+                        ],
+                        cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                        height: 'full-250',
+                        cols: [[
+                            {field:'id', title: 'ID', sort: true}
+                            ,{field:'username', title: '用户名'}
+                            ,{field:'sex', title: '性别', sort: true}
+                        ]]
+                    });
+                    dataEchart("layuiContentEchart3");
+                    return
+            }
+        }
+        
+        function dataEchart(ele) {
+            var myChart = echarts.init(document.getElementById(ele));
+            var option = {
+                title: {
+                    text: '某地区蒸发量和降水量',
+                    subtext: '纯属虚构'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: ['蒸发量', '降水量']
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                color: ['#009688', '#1E9FFF'],
+                series: [
+                    {
+                        name: '蒸发量',
+                        type: 'bar',
+                        data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    },
+                    {
+                        name: '降水量',
+                        type: 'bar',
+                        data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                        markPoint: {
+                            data: [
+                                {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
+                                {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+
+    </script>
+</body>
+</html>
