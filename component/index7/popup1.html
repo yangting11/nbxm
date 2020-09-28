@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
     <title>Document</title>
     <style>
+        .popup1{
+            width: 100%;
+            height: 390px;
+        }
+        .toogleContent{
+            height: 50px;
+        }
         .tab1{
             display: block;
-            height: 300px;
-            border-left:4px solid #548af5;
+            width: 800px;
+            height: 340px;
             position: relative;
         }
         .tab2{
             display: none;
-            height: 300px;
-            border-left:4px solid #548af5;
+            height: 340px;
+            width: 800px;
             position: relative;
         }
         .actionBox{
@@ -27,15 +34,18 @@
             box-sizing: border-box;
             text-align: right;
         }
+        .layui-form-selected dl{
+            max-height: 200px;
+        }
     </style>
 </head>
 <body>
     <div class="popup1">
         <div class="toogleContent" >
-            <div style="width:50%;height:43px;float: left;">
+            <div style="width:50%;height:38px;float: left;">
                 <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="0">切换按钮1</button>
             </div>
-            <div style="width:50%;height:43px;float: left;">
+            <div style="width:50%;height:38px;float: left;">
                 <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="1">切换按钮2</button>
             </div>
         </div>
@@ -133,24 +143,23 @@
         $(".btnTab").eq(0).css('background','#009688');
         $(".btnTab").eq(0).css('color','#fff');
         $(".btnTab").on('click',function(){
-            alert(1)
-            // if($(this).attr('type')==0){
-            //     //点击的是按钮1
-            //     $(".tab1").css('display','block');
-            //     $(".tab2").css('display','none');
-            //     $(".btnTab").eq(1).css('background','');
-            //     $(".btnTab").eq(1).css('color','');
-            //     $(".btnTab").eq(0).css('background','#009688');
-            //     $(".btnTab").eq(0).css('color','#fff');
-            // }else{
-            //     //点击的是按钮2
-            //     $(".tab2").css('display','block')
-            //     $(".tab1").css('display','none')
-            //     $(".btnTab").eq(0).css('background','');
-            //     $(".btnTab").eq(0).css('color','');
-            //     $(".btnTab").eq(1).css('background','#009688');
-            //     $(".btnTab").eq(1).css('color','#fff');
-            // }
+            if($(this).attr('type')==0){
+                //点击的是按钮1
+                $(".tab1").css('display','block');
+                $(".tab2").css('display','none');
+                $(".btnTab").eq(1).css('background','');
+                $(".btnTab").eq(1).css('color','');
+                $(".btnTab").eq(0).css('background','#009688');
+                $(".btnTab").eq(0).css('color','#fff');
+            }else{
+                //点击的是按钮2
+                $(".tab2").css('display','block')
+                $(".tab1").css('display','none')
+                $(".btnTab").eq(0).css('background','');
+                $(".btnTab").eq(0).css('color','');
+                $(".btnTab").eq(1).css('background','#009688');
+                $(".btnTab").eq(1).css('color','#fff');
+            }
         })
     </script>
 </body>
