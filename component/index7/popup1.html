@@ -6,11 +6,131 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
     <title>Document</title>
+    <style>
+        .tab1{
+            display: block;
+        }
+        .tab2{
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="popup1">
-        
+        <div class="toogleContent" >
+            <div style="width:50%;height:43px;float: left;">
+                <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="0">切换按钮1</button>
+            </div>
+            <div style="width:50%;height:43px;float: left;">
+                <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="1">切换按钮2</button>
+            </div>
+        </div>
+        <div class="tab1">
+            <form class="layui-form layui-row" action="">
+                <div class="layui-form-item layui-form-pane">
+                    <label class="layui-form-label">选择框1：</label>
+                    <div class="layui-input-inline">
+                        <select class="rightBoxHeaderSelect" id="select1" name="city" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">北京</option>
+                            <option value="1">上海</option>
+                            <option value="2">广州</option>
+                            <option value="3">深圳</option>
+                            <option value="4">杭州</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-pane">
+                    <label class="layui-form-label">短输入框</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="" id="tab1_input1" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-form-pane">
+                        <label class="layui-form-label">短输入框</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="tab1-start" placeholder="yyyy-MM-dd">
+                        </div>
+                        <div class="layui-form-mid"> —— </div>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="tab1-end" placeholder="yyyy-MM-dd">
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-form-pane">
+                        <label class="layui-form-label">短输入框</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" id="tab1_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab2">
+            <form class="layui-form layui-row" action="">
+                <div class="layui-form-item layui-form-pane">
+                    <label class="layui-form-label">选择框2：</label>
+                    <div class="layui-input-inline">
+                        <select class="rightBoxHeaderSelect" id="select2" name="city" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">北京</option>
+                            <option value="1">上海</option>
+                            <option value="2">广州</option>
+                            <option value="3">深圳</option>
+                            <option value="4">杭州</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-pane">
+                    <label class="layui-form-label">短输入框</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="tab2_input1" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline layui-form-pane">
+                        <label class="layui-form-label">短输入框</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="tab2-start" placeholder="yyyy-MM-dd">
+                        </div>
+                        <div class="layui-form-mid"> —— </div>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="tab2-end" placeholder="yyyy-MM-dd">
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-form-pane">
+                        <label class="layui-form-label">短输入框</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="" id="tab2_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        $(".btnTab").eq(0).css('background','#009688');
+        $(".btnTab").eq(0).css('color','#fff');
+        $(".btnTab").on('click',function(){
+            if($(this).attr('type')==0){
+                //点击的是按钮1
+                $(".tab1").css('display','block');
+                $(".tab2").css('display','none');
+                $(".btnTab").eq(1).css('background','');
+                $(".btnTab").eq(1).css('color','');
+                $(".btnTab").eq(0).css('background','#009688');
+                $(".btnTab").eq(0).css('color','#fff');
+            }else{
+                //点击的是按钮2
+                $(".tab2").css('display','block')
+                $(".tab1").css('display','none')
+                $(".btnTab").eq(0).css('background','');
+                $(".btnTab").eq(0).css('color','');
+                $(".btnTab").eq(1).css('background','#009688');
+                $(".btnTab").eq(1).css('color','#fff');
+            }
+        })
+    </script>
 </body>
 </html>
