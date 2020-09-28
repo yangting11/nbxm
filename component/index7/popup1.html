@@ -9,13 +9,13 @@
     <style>
         .tab1{
             display: block;
-            height: 260px;
+            height: 300px;
             border-left:4px solid #548af5;
             position: relative;
         }
         .tab2{
             display: none;
-            height: 260px;
+            height: 300px;
             border-left:4px solid #548af5;
             position: relative;
         }
@@ -133,23 +133,24 @@
         $(".btnTab").eq(0).css('background','#009688');
         $(".btnTab").eq(0).css('color','#fff');
         $(".btnTab").on('click',function(){
-            if($(this).attr('type')==0){
-                //点击的是按钮1
-                $(".tab1").css('display','block');
-                $(".tab2").css('display','none');
-                $(".btnTab").eq(1).css('background','');
-                $(".btnTab").eq(1).css('color','');
-                $(".btnTab").eq(0).css('background','#009688');
-                $(".btnTab").eq(0).css('color','#fff');
-            }else{
-                //点击的是按钮2
-                $(".tab2").css('display','block')
-                $(".tab1").css('display','none')
-                $(".btnTab").eq(0).css('background','');
-                $(".btnTab").eq(0).css('color','');
-                $(".btnTab").eq(1).css('background','#009688');
-                $(".btnTab").eq(1).css('color','#fff');
-            }
+            alert(1)
+            // if($(this).attr('type')==0){
+            //     //点击的是按钮1
+            //     $(".tab1").css('display','block');
+            //     $(".tab2").css('display','none');
+            //     $(".btnTab").eq(1).css('background','');
+            //     $(".btnTab").eq(1).css('color','');
+            //     $(".btnTab").eq(0).css('background','#009688');
+            //     $(".btnTab").eq(0).css('color','#fff');
+            // }else{
+            //     //点击的是按钮2
+            //     $(".tab2").css('display','block')
+            //     $(".tab1").css('display','none')
+            //     $(".btnTab").eq(0).css('background','');
+            //     $(".btnTab").eq(0).css('color','');
+            //     $(".btnTab").eq(1).css('background','#009688');
+            //     $(".btnTab").eq(1).css('color','#fff');
+            // }
         })
     </script>
 </body>
