@@ -7,35 +7,40 @@
     <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
     <title>Document</title>
     <style>
-        .popup1{
-            width: 100%;
-            height: 390px;
+        body{
+            position: relative;
         }
         .toogleContent{
-            height: 50px;
+            height: 36px;
         }
         .tab1{
             display: block;
-            width: 800px;
-            height: 340px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 524px;
             position: relative;
+            border-left: 4px solid #1E9FFF;
         }
         .tab2{
             display: none;
-            height: 340px;
-            width: 800px;
+            height: 524px;
+            border-left: 4px solid #1E9FFF;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 100%;
             position: relative;
         }
         .actionBox{
             position: absolute;
-            top: 210px;
             width: 100%;
-            right: 90px;
+            top: 480px;
+            right: 80px;
             box-sizing: border-box;
             text-align: right;
         }
         .layui-form-selected dl{
-            max-height: 200px;
+            max-height: 300px;
         }
     </style>
 </head>
@@ -73,12 +78,12 @@
                 <div class="layui-form-item">
                     <div class="layui-inline layui-form-pane">
                         <label class="layui-form-label">短输入框</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="tab1-start" placeholder="yyyy-MM-dd">
+                        <div class="layui-input-inline" style="margin-right: 0px;">
+                            <input type="text" class="layui-input" id="test-laydate-start1" placeholder="yyyy-MM-dd">
                         </div>
-                        <div class="layui-form-mid"> —— </div>
+                        <div class="layui-form-mid" style="margin-right: 0px;"> —— </div>
                         <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="tab1-end" placeholder="yyyy-MM-dd">
+                            <input type="text" class="layui-input" id="test-laydate-end1" placeholder="yyyy-MM-dd">
                         </div>
                     </div>
                     <div class="layui-inline layui-form-pane">
@@ -117,10 +122,10 @@
                 <div class="layui-form-item">
                     <div class="layui-inline layui-form-pane">
                         <label class="layui-form-label">短输入框</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-inline"  style="margin-right: 0px;">
                             <input type="text" class="layui-input" id="tab2-start" placeholder="yyyy-MM-dd">
                         </div>
-                        <div class="layui-form-mid"> —— </div>
+                        <div class="layui-form-mid"  style="margin-right: 0px;"> —— </div>
                         <div class="layui-input-inline">
                             <input type="text" class="layui-input" id="tab2-end" placeholder="yyyy-MM-dd">
                         </div>
@@ -140,8 +145,15 @@
     </div>
     <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
+        var laydate = layui.laydate;
         $(".btnTab").eq(0).css('background','#009688');
         $(".btnTab").eq(0).css('color','#fff');
+        laydate.render({
+            elem: '#test-laydate-start1'
+        });
+        laydate.render({
+            elem: '#test-laydate-end1'
+        });
         $(".btnTab").on('click',function(){
             if($(this).attr('type')==0){
                 //点击的是按钮1

@@ -93,10 +93,10 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-lg6 ">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" onclick="btn3Action()">百搭按钮3</button>
                         </div>
                         <div  class="layui-col-lg6">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮2</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮4</button>
                         </div>
                     </div>
                 </div>
@@ -122,14 +122,14 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
-                    <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
+                    <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮5</button>
                 </div>
                 <div class="bodyItem">
                     <div class="bodyItemTitle">
                         <span><img src="../../public/img/大饼图.png" alt=""></span>数据信息4
                     </div>
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
-                    <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
+                    <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮6</button>
                 </div>
             </div>
         </div>
@@ -137,6 +137,7 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
+        
         var ifOpen=false;
         document.getElementById("showTime").innerHTML=transTime(new Date());
         setInterval(function(){
@@ -183,13 +184,236 @@
             ifOpen=!ifOpen;
         }
         function btn1Action(){
+            layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
             layer.open({
-                title:'弹出框1',
-                type: 1,
-                shadeClose: true,
-                area:['900px', '440px'],
-                content: '<iframe style="border:none;outline:none;width:898px;height:390px" src="../../component/index7/popup1.html"></iframe>'//<button class="layui-btn layui-btn-warm"  style="position: absolute;top: 207px;right: 10px;" onclick="closeLayer()">取消</button>
+                    title:'弹出框1',
+                    type: 1,
+                    shadeClose: true,
+                    area:['900px', ''],
+                    content: `<div class="popup1">
+                                <div class="toogleContent" >
+                                    <div style="width:50%;height:38px;float: left;">
+                                        <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="0">切换按钮1</button>
+                                    </div>
+                                    <div style="width:50%;height:38px;float: left;">
+                                        <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="1">切换按钮2</button>
+                                    </div>
+                                </div>
+                                <div class="tab1">
+                                    <form class="layui-form layui-row" action="">
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框1：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="select1" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">短输入框</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="" id="tab1_input1" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline" style="margin-right: 0px;">
+                                                    <input type="text" class="layui-input" id="test-laydate-start1" placeholder="yyyy-MM-dd">
+                                                </div>
+                                                <div class="layui-form-mid" style="margin-right: 0px;"> —— </div>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="test-laydate-end1" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="" id="tab1_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal">确定1</button>
+                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab2">
+                                    <form class="layui-form layui-row" action="">
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框2：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="select2" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">短输入框</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" id="tab2_input1" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline"  style="margin-right: 0px;">
+                                                    <input type="text" class="layui-input" id="tab2-start" placeholder="yyyy-MM-dd">
+                                                </div>
+                                                <div class="layui-form-mid"  style="margin-right: 0px;"> —— </div>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="tab2-end" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="" id="tab2_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal">确定2</button>
+                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>`//
+                });
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+            var laydate = layui.laydate;
+            $(".btnTab").eq(0).css('background','#009688');
+            $(".btnTab").eq(0).css('color','#fff');
+            laydate.render({
+                elem: '#test-laydate-start1'
             });
+            laydate.render({
+                elem: '#test-laydate-end1'
+            });
+            laydate.render({
+                elem: '#test-laydate-start1'
+            });
+            laydate.render({
+                elem: '#test-laydate-end1'
+            });
+            $(".btnTab").on('click',function(){
+                if($(this).attr('type')==0){
+                    //点击的是按钮1
+                    $(".tab1").css('display','block');
+                    $(".tab2").css('display','none');
+                    $(".btnTab").eq(1).css('background','');
+                    $(".btnTab").eq(1).css('color','');
+                    $(".btnTab").eq(0).css('background','#009688');
+                    $(".btnTab").eq(0).css('color','#fff');
+                }else{
+                    //点击的是按钮2
+                    $(".tab2").css('display','block')
+                    $(".tab1").css('display','none')
+                    $(".btnTab").eq(0).css('background','');
+                    $(".btnTab").eq(0).css('color','');
+                    $(".btnTab").eq(1).css('background','#009688');
+                    $(".btnTab").eq(1).css('color','#fff');
+                    laydate.render({
+                        elem: '#tab2-start'
+                    });
+                    laydate.render({
+                        elem: '#tab2-end'
+                    });
+                }
+            })
+        })
+
+        }
+        function btn3Action(){
+            layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            layer.open({
+                    title:'弹出框1',
+                    type: 1,
+                    shadeClose: true,
+                    area:['900px', ''],
+                    content: `<div class="popup1">
+                                <div class="tab1">
+                                    <form class="layui-form layui-row" action="">
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">短输入框</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="" id="tab21_input1" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>                                        
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline" style="margin-right: 0px;">
+                                                    <input type="text" class="layui-input" id="tab21-start" placeholder="yyyy-MM-dd">
+                                                </div>
+                                                <div class="layui-form-mid" style="margin-right: 0px;"> —— </div>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="tab21-end" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="" id="tab21_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">短输入框</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="" id="tab21_input3" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框1：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="select3" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="btnEchart" style="width:100%;height:300px;background:#f00"></div>
+                                        <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal">确定1</button>
+                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>`//
+                });
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+            var laydate = layui.laydate;
+            $(".btnTab").eq(0).css('background','#009688');
+            $(".btnTab").eq(0).css('color','#fff');
+            laydate.render({
+                elem: '#tab21-start'
+            });
+            laydate.render({
+                elem: '#tab21-end'
+            });
+        })
         }
         function closeLayer() {
             $('.layui-layer-shade').click();
