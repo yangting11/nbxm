@@ -62,7 +62,7 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-lg6 ">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" onclick="btn1Action()">百搭按钮1</button>
                         </div>
                         <div  class="layui-col-lg6">
                             <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮2</button>
@@ -93,7 +93,7 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-lg6 ">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid" onclick="btn1Action()">百搭按钮1</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
                         </div>
                         <div  class="layui-col-lg6">
                             <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮2</button>
@@ -145,6 +145,7 @@
         var layer = layui.layer;
         var map = map;
         initMap();
+        btn1Action();
         function initMap(){
             map = L.map("mapid", {
                 center: [37.005646, 114.52044],
