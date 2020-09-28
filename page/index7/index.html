@@ -93,7 +93,7 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-lg6 ">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮1</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" onclick="btn1Action()">百搭按钮1</button>
                         </div>
                         <div  class="layui-col-lg6">
                             <button class="layui-btn layui-btn-normal layui-btn-fluid">百搭按钮2</button>
@@ -180,6 +180,18 @@
 
             }
             ifOpen=!ifOpen;
+        }
+        function btn1Action(){
+            layer.open({
+                title:'弹出框1',
+                type: 1,
+                shadeClose: true,
+                area:['800px', 'auto'],
+                content: '<iframe style="border:none;outline:none;width:100%;max-height:580px" src="../../component/index7/popup1.html"></iframe><div style="position:absolute;top:14px;right:10px;" onclick="closeLayer()"><i class="layui-icon layui-icon-close" style="font-size:20px"></i></div><button class="layui-btn layui-btn-warm" style="position: absolute;top: 550px;right: 20px;" onclick="closeLayer()">关闭</button>'
+            });
+        }
+        function closeLayer() {
+            $('.layui-layer-shade').click();
         }
     </script>
 </body>
