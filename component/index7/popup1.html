@@ -9,9 +9,23 @@
     <style>
         .tab1{
             display: block;
+            height: 260px;
+            border-left:4px solid #548af5;
+            position: relative;
         }
         .tab2{
             display: none;
+            height: 260px;
+            border-left:4px solid #548af5;
+            position: relative;
+        }
+        .actionBox{
+            position: absolute;
+            top: 210px;
+            width: 100%;
+            right: 90px;
+            box-sizing: border-box;
+            text-align: right;
         }
     </style>
 </head>
@@ -64,6 +78,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="actionBox">
+                    <button class="layui-btn layui-btn-normal">确定1</button>
+                </div>
             </form>
         </div>
         <div class="tab2">
@@ -104,6 +121,9 @@
                             <input type="text" name="" id="tab2_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
                         </div>
                     </div>
+                </div>
+                <div class="actionBox">
+                    <button class="layui-btn layui-btn-normal">确定2</button>
                 </div>
             </form>
         </div>
