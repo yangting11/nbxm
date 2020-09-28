@@ -1,0 +1,95 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    overflow: hidden;
+}
+#mapid{
+    width:100vw;
+    height: 100vh;
+}
+.popup{
+    width:300px;
+    height:200px;
+    position: relative;
+}
+.closePopup{
+    position: absolute;
+    top: -34px;
+    right: -38px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 20px;
+}
+.closePopup i{
+    margin-left: -7px;
+}
+.leaflet-popup-content-wrapper{
+    border:10px solid #539a81;
+    border-radius: 4px;
+}
+.leaflet-popup-tip{
+    background: #539a81;
+}
+.leaflet-popup-close-button{
+    display: none;
+}
+.leaflet-popup-content{
+    width: 480px!important;
+}
+.leaflet-zoom-animated{
+    bottom: 20px!important;
+}
+.leaflet-label{
+    width: 100px;
+    text-align: center;
+    border: 1px solid #259feb;
+    padding: 0px;
+}
+.blueBlock{
+    background:#259feb;
+    color: #fff;
+}
+.leaflet-label div div{
+    height: 24px;
+    line-height: 24px;
+}
+.leaflet-tooltip-top:before{
+    border-top-color: transparent!important;
+}
+.rightBox{
+    position: absolute;
+    width: 400px;
+    height: 100vh;
+    top: 0px;
+    right: -400px;
+    transition: all 0.5s linear;
+    background: #f3f3f3;
+    z-index: 99999;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+.rightBoxAll{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.toogleBox{
+    position: absolute;
+    width: 30px;
+    background: #e5e5e5;
+    border-radius: 6px 0px 0px 6px;
+    height: 80px;
+    top: 40%;
+    left: -30px;
+    text-align: center;
+}
+.toogleBox img{
+    margin-top: 26px;
+    height: 24px;
+}

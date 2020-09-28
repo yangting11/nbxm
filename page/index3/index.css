@@ -44,8 +44,8 @@
 .layuiTableBodyTopRight{
     float: right;
 }
-.layuiTableBodyTopRight .layui-btn-sm{
-    line-height: 28px;
+.layuiTableBodyTopRight .layui-btn{
+    font-size: 16px;
 }
 .layuiBodyContent{
     width: 100%;
