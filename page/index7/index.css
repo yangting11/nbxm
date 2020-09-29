@@ -234,9 +234,14 @@ body{
     margin-top: 10px;
     margin-left: 60px;
 }
-.textBlockTabInfo1 li,.textBlockTabInfo2 li{
+.textBlockTabInfo1 li{
     float: left;
     width: 165px;
+    text-align: center;
+}
+.textBlockTabInfo2 li{
+    float: left;
+    width: 115px;
     text-align: center;
 }
 .dataActionTab1,.dataActionTab2{
@@ -250,4 +255,10 @@ body{
     border-right: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     box-sizing: border-box;
+}
+#echartTabInfo1,#echartTabInfo2{
+    display: block
+}
+#TableTabInfo1,#TableTabInfo2{
+    display: none;
 }
