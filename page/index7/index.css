@@ -181,7 +181,6 @@ body{
     text-align: right;
 }
 
-
 .toogleContent{
     height: 36px;
 }
@@ -211,4 +210,44 @@ body{
 }
 .layui-form-selected dl{
     max-height: 160px;
+}
+#tab2_btnText li{
+    display: inline-block;
+    float: right;
+    margin: 10px;
+}
+#tab2_btnText li:nth-child(1){
+    float: left;
+}
+.detailTypeTabInfo1:hover,.actionTypeTabInfo1:hover,.detailTypeTabInfo2:hover,.actionTypeTabInfo2:hover{
+    background: #1E9FFF;
+}
+.detailTypeTabInfo1:hover i,.actionTypeTabInfo1:hover i,.detailTypeTabInfo2:hover i,.actionTypeTabInfo2:hover i{
+    color: #fff;
+}
+.viewActionTab1,.viewActionTab2{
+    float: left;
+}
+.textBlockTabInfo1,.textBlockTabInfo2{
+    display: inline-block;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.textBlockTabInfo1 li,.textBlockTabInfo2 li{
+    float: left;
+    width: 165px;
+    text-align: center;
+}
+.dataActionTab1,.dataActionTab2{
+    float: right;
+}
+.addBorder{
+    width: 80px!important;
+    height: 38px;
+    line-height: 28px;
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    box-sizing: border-box;
 }
