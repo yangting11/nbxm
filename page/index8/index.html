@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="../../echarts.min1.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link href="./index.css" rel="stylesheet"></link>
+    <title>Document</title>
+</head>
+<body>
+    <div id="mapid"></div>
+    <div class="rightBox" id="rightBox">
+        <div class="rightBoxAll">
+            <div class="toogleBox" onclick="clickToogle()">
+                <img id="toogleImg" src="../../public/img/left.png" alt="向右">
+            </div>
+            <div class="rightBoxHeader">
+                <div class="rightBoxHeaderLeft">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <select class="rightBoxHeaderSelect" placeholder="重新选择数据"  lay-filter="pageHeaderSelect" id="pageHeaderSelect" name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">北京</option>
+                                    <option value="1">上海</option>
+                                    <option value="2">广州</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="rightBoxHeaderRight">
+                    <div id="showTime"></div>
+                </div>
+            </div>
+            <div class="rightBoxBody">
+          
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="../../layuiadmin/layui/layui.all.js"></script>
+    <script>
+        
+        var ifOpen=false;
+        document.getElementById("showTime").innerHTML=transTime(new Date());
+        setInterval(function(){
+            document.getElementById("showTime").innerHTML=transTime(new Date());
+        },1000)
+        var layer = layui.layer;
+        var table = layui.table;
+        var form = layui.form;
+        var map = map;
+        initMap();
+        btn1Action();
+        form.on('select(pageHeaderSelect)', function(data){
+                    // console.log(data.value);
+            btn1Action()
+        });
+        function initMap(){
+            map = L.map("mapid", {
+                center: [37.005646, 114.52044],
+                zoom: 11,
+                fullscreenControl: false,
+                zoomControl: false,
+                attributionControl: false
+            });
+            let baseLayer=L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}",{
+                subdomains: "1234"
+            });
+            map.addLayer(baseLayer);
+        }
+        function transTime(time){
+            let year = time.getFullYear();
+            let month = formatTime(time.getMonth()+1);
+            let day = formatTime(time.getDate());
+            let hour = formatTime(time.getHours());
+            let min = formatTime(time.getMinutes());
+            let sec = formatTime(time.getSeconds());
+            return year+'-'+month+'-'+day+' '+hour+':'+min+':'+sec
+        }
+        function formatTime(time){
+            return time<10?'0'+time:time
+        }
+        function clickToogle(){
+            if(ifOpen){
+                $("#toogleImg").attr('src','../../public/img/left.png')
+                $("#rightBox").css('right','-440px')
+            }else{
+                $("#toogleImg").attr('src','../../public/img/right.png');
+                $("#rightBox").css('right','0px')
+            }
+            ifOpen=!ifOpen;
+        }
+        function btn1Action(){
+            layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            layer.open({
+                    title:'弹出框1',
+                    type: 1,
+                    shadeClose: true,
+                    area:['900px', ''],
+                    content: `<div class="popup1">
+                                <div class="toogleContent" >
+                                    <div style="width:50%;height:38px;float: left;">
+                                        <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="0">默认按钮1</button>
+                                    </div>
+                                    <div style="width:50%;height:38px;float: left;">
+                                        <button class="layui-btn layui-btn-primary btnTab layui-btn-fluid" type="1">默认按钮2</button>
+                                    </div>
+                                </div>
+                                <div class="tab1">
+                                    <form class="layui-form layui-row" action="">
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框1：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="popup1_select1" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框1：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="popup1_select2" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline" style="margin-right: 0px;">
+                                                    <input type="text" class="layui-input" id="test-laydate-start1" placeholder="yyyy-MM-dd">
+                                                </div>
+                                                <div class="layui-form-mid" style="margin-right: 0px;"> —— </div>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="test-laydate-end1" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="" id="tab1_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal">确定1</button>
+                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab2">
+                                    <form class="layui-form layui-row" action="">
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框2：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="popup1_select3" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-pane">
+                                            <label class="layui-form-label">选择框2：</label>
+                                            <div class="layui-input-inline">
+                                                <select class="rightBoxHeaderSelect" id="popup1_select4" name="city" lay-verify="required">
+                                                    <option value=""></option>
+                                                    <option value="0">北京</option>
+                                                    <option value="1">上海</option>
+                                                    <option value="2">广州</option>
+                                                    <option value="3">深圳</option>
+                                                    <option value="4">杭州</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline"  style="margin-right: 0px;">
+                                                    <input type="text" class="layui-input" id="tab2-start" placeholder="yyyy-MM-dd">
+                                                </div>
+                                                <div class="layui-form-mid"  style="margin-right: 0px;"> —— </div>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" class="layui-input" id="tab2-end" placeholder="yyyy-MM-dd">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline layui-form-pane">
+                                                <label class="layui-form-label">短输入框</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="" id="tab2_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal">确定2</button>
+                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>`//
+                });
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+            var laydate = layui.laydate;
+            $(".btnTab").eq(0).css('background','#009688');
+            $(".btnTab").eq(0).css('color','#fff');
+            laydate.render({
+                elem: '#test-laydate-start1'
+            });
+            laydate.render({
+                elem: '#test-laydate-end1'
+            });
+            laydate.render({
+                elem: '#test-laydate-start1'
+            });
+            laydate.render({
+                elem: '#test-laydate-end1'
+            });
+            $(".btnTab").on('click',function(){
+                if($(this).attr('type')==0){
+                    //点击的是按钮1
+                    $(".tab1").css('display','block');
+                    $(".tab2").css('display','none');
+                    $(".btnTab").eq(1).css('background','');
+                    $(".btnTab").eq(1).css('color','');
+                    $(".btnTab").eq(0).css('background','#009688');
+                    $(".btnTab").eq(0).css('color','#fff');
+                }else{
+                    //点击的是按钮2
+                    $(".tab2").css('display','block')
+                    $(".tab1").css('display','none')
+                    $(".btnTab").eq(0).css('background','');
+                    $(".btnTab").eq(0).css('color','');
+                    $(".btnTab").eq(1).css('background','#009688');
+                    $(".btnTab").eq(1).css('color','#fff');
+                    laydate.render({
+                        elem: '#tab2-start'
+                    });
+                    laydate.render({
+                        elem: '#tab2-end'
+                    });
+                }
+            })
+        })
+
+        }     
+    </script>
+</body>
+</html>
