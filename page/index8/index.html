@@ -39,7 +39,36 @@
                 </div>
             </div>
             <div class="rightBoxBody">
-          
+                <div class="bodyItem">
+                    <div class="bodyItemTitle">
+                        <span onclick="popupInfo1()"><img src="../../public/img/大饼图.png" alt=""></span>数据数据1
+                    </div>
+                    <form class="layui-form layui-row" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">数据信息：</label>
+                            <div class="layui-input-inline">
+                                <select onchange="changeSelectBar1()" class="rightBoxHeaderSelect" id="selectpage1" lay-filter="selectpage1" name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">北京</option>
+                                    <option value="1">上海</option>
+                                    <option value="2">广州</option>
+                                    <option value="3">深圳</option>
+                                    <option value="4">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
+                    <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
+                    <div class="layui-row layui-col-space10">
+                        <div class="layui-col-lg6 ">
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" id="bdbtn1" onclick="btn1Action()">百搭按钮1</button>
+                        </div>
+                        <div  class="layui-col-lg6">
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" id="bdbtn2">百搭按钮2</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -160,11 +189,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="actionBox">
-                                            <button class="layui-btn layui-btn-normal">确定1</button>
-                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
-                                        </div>
                                     </form>
+                                    <div class="actionBox">
+                                        <button class="layui-btn layui-btn-normal">确定1</button>
+                                        <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                    </div>
                                 </div>
                                 <div class="tab2">
                                     <form class="layui-form layui-row" action="">
@@ -212,11 +241,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="actionBox">
-                                            <button class="layui-btn layui-btn-normal">确定2</button>
-                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
-                                        </div>
                                     </form>
+                                    <div class="actionBox">
+                                        <button class="layui-btn layui-btn-normal">确定2</button>
+                                        <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                    </div>
                                 </div>
                             </div>`//
                 });
@@ -266,6 +295,12 @@
         })
 
         }     
+        function closeLayer() {
+            $('.layui-layer-shade').click();
+        }
+        function popupInfo1(){
+
+        }
     </script>
 </body>
 </html>

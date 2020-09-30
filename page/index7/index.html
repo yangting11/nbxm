@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
     <script src="../../echarts.min1.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
     <link href="./index.css" rel="stylesheet"></link>
     <title>Document</title>
@@ -15,7 +15,7 @@
     <div class="rightBox" id="rightBox">
         <div class="rightBoxAll">
             <div class="toogleBox" onclick="clickToogle()">
-                <img id="toogleImg" src="../../public/img/left.png" alt="向右">
+                <img id="toogleImg" src="../../public/img/right.png" alt="向右">
             </div>
             <div class="rightBoxHeader">
                 <div class="rightBoxHeaderLeft">
@@ -70,6 +70,7 @@
                     </div>
                 </div>
                 <div class="bodyItem">
+                    <div id="coverBlock2"></div>
                     <div class="bodyItemTitle">
                         <span><img src="../../public/img/大饼图.png" alt=""></span>数据信息2
                     </div>
@@ -77,7 +78,7 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label">数据信息：</label>
                             <div class="layui-input-inline">
-                                <select disabled="disabled" class="rightBoxHeaderSelect" lay-filter="select2" id="select2" name="city" lay-verify="required">
+                                <select class="rightBoxHeaderSelect" lay-filter="select2" id="select2" name="city">
                                     <option value=""></option>
                                     <option value="0">北京</option>
                                     <option value="1">上海</option>
@@ -93,14 +94,15 @@
                     <div><span class="bodyLableItem">数据信息：</span>中华人民共和国</div>
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-lg6 ">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid layui-btn-disabled" id="bdbtn3" onclick="btn3Action()">百搭按钮3</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" id="bdbtn3" onclick="btn3Action()">百搭按钮3</button>
                         </div>
                         <div  class="layui-col-lg6">
-                            <button class="layui-btn layui-btn-normal layui-btn-fluid layui-btn-disabled" id="bdbtn4" >百搭按钮4</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-fluid" id="bdbtn4" >百搭按钮4</button>
                         </div>
                     </div>
                 </div>
                 <div class="bodyItem">
+                    <div id="coverBlock3"></div>
                     <div class="bodyItemTitle">
                         <span><img src="../../public/img/大饼图.png" alt=""></span>数据信息3
                     </div>
@@ -125,6 +127,7 @@
                     <button class="layui-btn layui-btn-normal layui-btn-fluid" onclick="btn5Action()">百搭按钮5</button>
                 </div>
                 <div class="bodyItem">
+                    <div id="coverBlock4"></div>
                     <div class="bodyItemTitle">
                         <span><img src="../../public/img/大饼图.png" alt=""></span>数据信息4
                     </div>
@@ -137,7 +140,7 @@
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
-        var ifOpen=false;
+        var ifOpen=true;
         var isDsiableBlock2=true;
         var isDsiableBlock3=true;
         var isDsiableBlock4=true;
@@ -216,7 +219,7 @@
                                         <div class="layui-form-item layui-form-pane">
                                             <label class="layui-form-label">选择框1：</label>
                                             <div class="layui-input-inline">
-                                                <select class="rightBoxHeaderSelect" id="select1" name="city" lay-verify="required">
+                                                <select class="rightBoxHeaderSelect" id="select1" name="city">
                                                     <option value=""></option>
                                                     <option value="0">北京</option>
                                                     <option value="1">上海</option>
@@ -229,7 +232,7 @@
                                         <div class="layui-form-item layui-form-pane">
                                             <label class="layui-form-label">短输入框</label>
                                             <div class="layui-input-inline">
-                                                <input type="text" name="" id="tab1_input1" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                <input type="text" name="" id="tab1_input1" placeholder="请输入" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
@@ -246,22 +249,22 @@
                                             <div class="layui-inline layui-form-pane">
                                                 <label class="layui-form-label">短输入框</label>
                                                 <div class="layui-input-inline">
-                                                    <input type="text" name="" id="tab1_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                    <input type="text" name="" id="tab1_input2" placeholder="请输入" autocomplete="off" class="layui-input">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="actionBox">
-                                            <button class="layui-btn layui-btn-normal">确定1</button>
-                                            <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
-                                        </div>
                                     </form>
+                                    <div class="actionBox">
+                                        <button class="layui-btn layui-btn-normal" onclick="freeBlock2()">确定1</button>
+                                        <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
+                                    </div>
                                 </div>
                                 <div class="tab2">
                                     <form class="layui-form layui-row" action="">
                                         <div class="layui-form-item layui-form-pane">
                                             <label class="layui-form-label">选择框2：</label>
                                             <div class="layui-input-inline">
-                                                <select class="rightBoxHeaderSelect" id="select2" name="city" lay-verify="required">
+                                                <select class="rightBoxHeaderSelect" id="select2" name="city">
                                                     <option value=""></option>
                                                     <option value="0">北京</option>
                                                     <option value="1">上海</option>
@@ -274,7 +277,7 @@
                                         <div class="layui-form-item layui-form-pane">
                                             <label class="layui-form-label">短输入框</label>
                                             <div class="layui-input-inline">
-                                                <input type="text" id="tab2_input1" name="" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                <input type="text" id="tab2_input1" name="" placeholder="请输入" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
@@ -291,15 +294,15 @@
                                             <div class="layui-inline layui-form-pane">
                                                 <label class="layui-form-label">短输入框</label>
                                                 <div class="layui-input-inline">
-                                                    <input type="text" name="" id="tab2_input2" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                    <input type="text" name="" id="tab2_input2" placeholder="请输入" autocomplete="off" class="layui-input">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="actionBox">
-                                            <button class="layui-btn layui-btn-normal">确定2</button>
+                                    </form>
+                                    <div class="actionBox">
+                                            <button class="layui-btn layui-btn-normal" onclick="freeBlock2()">确定2</button>
                                             <button class="layui-btn layui-btn-warm" onclick="closeLayer()">取消</button>
                                         </div>
-                                    </form>
                                 </div>
                             </div>`//
                 });
@@ -348,7 +351,14 @@
             })
         })
 
-        }      
+        }  
+        function freeBlock2(){
+            if(isDsiableBlock2){
+                isDsiableBlock2=false;
+                $("#coverBlock2").css('display','none')
+            }
+            closeLayer()
+        }    
         function btn3Action(){
             layui.use('form', function(){
             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
@@ -567,6 +577,10 @@
             };
         }
         function openPopupInfo1(){
+            if(isDsiableBlock3){
+                isDsiableBlock3 = false;
+                $("#coverBlock3").css('display','none')
+            }
             closeLayer()
             layui.use('form', function(){
                 var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
@@ -802,6 +816,10 @@
             parent.layer.close(parent.layer.index)
         }
         function openPopupInfo2(){
+            if(isDsiableBlock4){
+                isDsiableBlock4=false;
+                $("#coverBlock4").css('display','none')
+            }
             closeLayer()
             layui.use('form', function(){
                 var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功

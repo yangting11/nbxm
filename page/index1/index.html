@@ -218,6 +218,13 @@
     <script src="../../layuiadmin/layui/layui.all.js"></script>
     <script>
         var ifOpen=false;
+        var mapLayer = L.layerGroup({});
+        let mapPoint = [
+            [37, 114.45],
+            [36, 114.05],
+            [37, 114.90],
+            [37.1, 114.1]
+        ]
         document.getElementById("showTime").innerHTML=transTime(new Date());
         setInterval(function(){
             document.getElementById("showTime").innerHTML=transTime(new Date());
@@ -242,23 +249,33 @@
                 subdomains: "1234"
             });
             map.addLayer(baseLayer);
-            var marker = L.marker([37, 114.45],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
-            marker.on('click',e=>{
-                if($("#chartid").length >0){
-                    return
-                }
-                var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:480px;height:330px">
-                        <div id="chartid" style="width:500px;height:360px"></div>
-                        <div class="closePopup" id="closePopup">
-                            <i class="layui-icon layui-icon-close-fill" style="font-size: 30px; color: #1E9FFF;"></i>  </div>
-                </div>`);
-                map.openPopup(popup)  
-                echart();
-                $("#closePopup").on('click',function(){
-                    map.closePopup();
-                })
-                map.flyTo([e.latlng.lat,e.latlng.lng],13)
-            })     
+
+            for(var i=0;i<mapPoint.length;i++){
+                let marker = L.marker(mapPoint[i],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(mapLayer).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+                marker.on('click',e=>{
+                    if($("#chartid").length >0){
+                        return
+                    }
+                    var popup = L.popup().setLatLng([e.latlng.lat,e.latlng.lng]).setContent(`<div class="popup" style="width:480px;height:330px">
+                            <div id="chartid" style="width:500px;height:360px"></div>
+                            <div class="closePopup" id="closePopup">
+                                <i class="layui-icon layui-icon-close-fill" style="font-size: 30px; color: #1E9FFF;"></i>  </div>
+                    </div>`);
+                    map.openPopup(popup)  
+                    echart();
+                    $("#closePopup").on('click',function(){
+                        map.closePopup();
+                    })
+                }) 
+            }
+            mapLayer.addTo(map);
+            map.flyTo(mapPoint[0],13)
+            
+            // var marker1 = L.marker([37, 114.45],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+            // var marker1 = L.marker([36, 114.05],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+            // var marker1 = L.marker([37, 114.90],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+            // var marker1 = L.marker([37.1, 114.15],{icon:L.icon({iconUrl:'../../public/img/icon.png',iconSize:[28,36]})}).addTo(map).bindTooltip("<div><div>数据数据</div><div class='blueBlock'>#01AAED</div></div>",{permanent:true,opacity:1,direction:'top',offset:[0,50],className:'leaflet-label'}).openTooltip();
+                
         }
         function echart() {
             // 基于准备好的dom，初始化echarts实例

@@ -116,13 +116,14 @@ body{
     width: 100%;
     height: calc(100vh - 60px);
     overflow-y: auto;
-    background: rgba(204, 204, 204, 1)!important;
+    background: rgba(220, 220, 220, 1)!important;
 }
 .rightBoxBody::-webkit-scrollbar{
     width: 0px;
 }
 .bodyItem{
-    background: rgba(204, 204, 204, 1);
+    position: relative;
+    background: rgba(220, 220, 220, 1);
     padding: 2px;
     border-left: 4px solid rgba(102, 102, 153, 1);
     box-sizing: border-box;
@@ -139,7 +140,7 @@ body{
 }
 .bodyItem:nth-child(4){
     border-left: 4px solid rgba(204, 204, 102, 1);
-    min-height: calc(100vh - 700px);
+    min-height: calc(100vh - 760px);
 }
 .bodyItemTitle{
     text-indent:40px;
@@ -180,7 +181,6 @@ body{
     line-height: 20px;
     text-align: right;
 }
-
 .toogleContent{
     height: 36px;
 }
